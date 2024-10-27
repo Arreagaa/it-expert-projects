@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+
+<body>
+
+  <!-- ======= hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active" style="background-image: url(http://cde.3.elcomercio.pe/ima/0/1/3/2/2/1322107.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+
+                <h2 class="animate__animated animate__fadeInDown">¡VISITA LOS MEJORES HOTELES A PRECIOS INCREÍBLES!</h2>
+                <p class="animate__animated animate__fadeInUp">ENCUENTRA TU PRÓXIMO ALOJAMIENTO </p>
+
+                <a class="btn-get-started scrollto animate__animated animate__fadeInUp" type="button" routerLink="/Usuario/PerfilCliente"> REGRESAR</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+  <main id="main">
+
+    <!-- ======= Clients Section ======= -->
+   <section id="clients" class="clients section-bg">
+    <div class="container">
+
+      <div class="row" data-aos="zoom-in">
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://hsancarlos.com/wp-content/uploads/2019/05/Logopng.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://www.caminorealantigua.com.gt/wp-content/uploads/2019/01/logo_CRAntigua_final.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://www.hotelcasaveranda.com/uploads/9/8/6/9/98696210/logo-scroll_3.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://static.wixstatic.com/media/b30165_fcbe561916e7482d8cfc1d8c07f47571~mv2.png/v1/fit/w_2500,h_1330,al_c/b30165_fcbe561916e7482d8cfc1d8c07f47571~mv2.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://hotelfontabella.com/wp-content/uploads/2022/04/LOGO-HOTEL-2.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://casapopenoe.ufm.edu/festivalaguacate2018/wp-content/uploads/2017/10/casablanca_logo.png" class="img-fluid" alt="">
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Cliens Section -->
+
+    <!-- ======= Services Section ======= -->
+
+    <section class="services section-bg">
+<div class="container">
+
+  <div class="text-center">
+    <div class="col-md">
+      <div class="card-body">
+    <div class="section-title">
+      <h2>Facturación</h2>
+    </div>
+  </div>
+</div>
+<br>
+
+    <div class="col-sm">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th style="font-size: 20px;" scope="col">Compra</th>
+            <th style="font-size: 20px;" scope="col">Cantidad o Noches</th>
+            <th style="font-size: 20px;" scope="col">Costo</th>
+            <th style="font-size: 20px;" scope="col">Total a Facturar</th>
+            <th style="font-size: 20px;" scope="col">Cancelar Reserva</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of RegistroModelGet">
+            <td style="font-size: 20px;">{{registro.nombreCompra}}</td>
+            <td style="font-size: 20px;">{{registro.cantidad}}</td>
+            <td style="font-size: 20px;">{{registro.precio}} USD</td>
+            <td style="font-size: 20px;">{{registro.subTotal}} USD</td>
+            <td style="font-size: 20px;"><button class="btn btn-primary" type="button"><i class="bi bi-box-arrow-right" (click)="deleteRegistro(registro.nombreCompra)"></i></button></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-xl-8">
+
+      </div>
+      <div class="col-xl-3">
+        <ul class="list-unstyled">
+        </ul>
+        <p class="text-black float-start">
+          <span style="font-size: 25px;">{{precioTotal}}</span>USD a pagar</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- Facturar -->
+<!--<section class="services section-bg">
+  <div class="container">
+  <div class="row ">
+    <div class="col-md-8 mb-4">
+      <div class="card" >
+        <div class="card-body" style="background-color: #f8fbff;">
+          <div class="container mb-5 mt-3">
+            <div class="row d-flex align-items-baseline" >
+
+              <div class="section-title1">
+                <h4 class="card-title" style="text-align: center;">Factura</h4>
+              </div>
+            </div>
+
+            <div class="container">
+              <div class="col-md">
+                <div class="card-body">
+              <div class="row" style="justify-content: flex-end; justify-items: stretch;">
+                <p class="card-text" style="justify-content: flex-end; justify-items: center;">Dentro de la aplicación estoy registrado como {{this.identidad.nombre }},
+                  para los hoteles, las habitaciones son la fuente de ingresos más importante y rentable. Me encuentro en {{this.identidad.direccion}}. Es posible contactar conmigo
+                por {{this.identidad.email}}.</p>
+              </div>
+            </div>
+          </div>
+          <br>
+
+              <div class="col-sm">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Compra</th>
+                      <th scope="col">Cantidad o Noches</th>
+                      <th scope="col">Costo</th>
+                      <th scope="col">Total a Facturar</th>
+                      <th scope="col">Cancelar Reserva</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let registro of RegistroModelGet">
+                      <td>{{registro.nombreCompra}}</td>
+                      <td>{{registro.cantidad}}</td>
+                      <td>{{registro.precio}} USD</td>
+                      <td>{{registro.subTotal}} USD</td>
+                      <td><button class="btn btn-primary" type="button"><i class="bi bi-box-arrow-right" (click)="deleteRegistro(registro.nombreCompra)"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-8">
+                  <p class="ms-3">Facturación Concretada</p>
+
+                </div>
+                <div class="col-xl-3">
+                  <ul class="list-unstyled">
+                  </ul>
+                  <p class="text-black float-start"><span class="text-black me-3"></span><span
+                      style="font-size: 25px;">{{precioTotal}}</span>USD</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>-->
+
+   <!-- ======= Services Section ======= -->
+   <section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+    </div>
+
+  </section><!-- End Services Section -->
+
+<section id="services" class="services section-bg">
+
+  <div id="portfolio" class="portfolio-area area-padding fix">
+    <div class="container">
+      <div class="row">
+    <div class="section-title">
+      <h2>GALERÍA DE FOTOGRAFÍAS</h2>
+    </div>
+  </div>
+
+  <div class="row awesome-project-content portfolio-container">
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/90/e4/e6/hotel-facade.jpg?w=900&h=-1&s=1" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>Entrada del Hotel</h4>
+              <span>InterContinental Tegucigalpa</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://www.cleantecsoftware.com/images/hotel_3.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>Hoteles de Lujo</h4>
+              <span>Piscina, Spa y Mucho más</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://www.hiltonhotels.com/assets/img/Hotel%20Images/Hilton/G/GUALLHH/GUALLHH_full_8502365.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>La Belleza de Guatemala</h4>
+              <span>Hoteles y Servicios de Calidad</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://images.e-tsw.com/_lib/b2b2c-sites/amr/dreamsmx/img/resorts/riviera-cancun/accommodations/slider/1.jpg?v1" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>Las Mejores Habitaciones</h4>
+              <span>Disfruta de la Comodidad</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://p4.wallpaperbetter.com/wallpaper/750/566/555/costa-adeje-gran-hotel-4k-hd-computer-desktop-wallpaper-preview.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery" >
+              <h4>Intalaciones Preciosas</h4>
+              <span>Lugares Inolvidables</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://viajesdeunchapin.com/wp-content/uploads/2022/01/porta-hotel-del-lago-habitacion-con-vista-al-lago.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery" >
+              <h4>Cultura y Tradiciones</h4>
+              <span>Visita y Descansa</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section><!-- End Services Section -->
+
+<app-footer></app-footer>
+</main>
+</body>
+</html>

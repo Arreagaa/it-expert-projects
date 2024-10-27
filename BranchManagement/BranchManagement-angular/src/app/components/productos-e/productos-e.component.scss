@@ -1,0 +1,93 @@
+.body{
+  font-family: 'Helvetica';
+}
+
+.btn-primary{
+  background-color: #6793F4 !important;
+  color: #fff;
+}
+
+p{
+  text-align: justify;
+}
+
+.text-white{
+  text-align: center;
+}
+
+.bg{
+  background-color: #6793F4;
+  font-size: 18px;
+}
+
+
+.card-link{
+  text-decoration: none;
+  color: #6793F4;
+}
+.hola{
+
+  color:white;
+  background-color: #6793F4;
+}
+
+.progress{
+  color: #6793F4;
+}
+
+[data-tooltip]{
+position:relative;
+border-bottom: 1px dotted #09C;
+cursor:pointer;
+}
+[data-tooltip]::before {
+content : attr(data-tooltip);
+background-color:white;
+opacity: 90%;
+color:#6793F4;
+-webkit-font-smoothing: antialiased;
+width:150px;
+padding:10px;
+height:auto;
+border-radius:3px;
+display:none;
+position:absolute;
+bottom:25px;
+left:calc(100% - 75%);
+pointer-events: none;
+z-index:99;
+ }
+[data-tooltip]::after{
+content:"";
+height:1px;
+width:1px;
+border:10px solid transparent;
+border-top-color:white;
+opacity: 90%;
+position:absolute;
+bottom:4px;
+left:50%;
+display: none;
+}
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after
+{ display:block;}
+
+.mt-2{
+  font-size: 20px;
+  font-weight: bold;
+  color: #6793F4;
+}
+
+.btn-back{
+  margin-left: 625px;
+  background-color: #6793F4 !important;
+  color: #fff;
+}
+
+.btnStock{
+  margin: 8px;
+  border: blue;
+  background-color: #6793F4 !important;
+  color: #fff;
+}

@@ -1,0 +1,59 @@
+<br>
+<div class="espacio">
+
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+      <form action="#">
+        <h1>Create Account</h1>
+        <div class="social-container">
+
+        </div>
+        <span>usa tu email para poder acceder</span>
+        <input type="text" placeholder="Name" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Inicio de Sesion</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form action="#">
+        <h1>Iniciar Sesión</h1>
+        <p class="texto" style="text-align: center">Comienza con nosotros, ¡Empieza Ya!</p>
+
+          <label class="br">Ingresa tu Correo Registrado</label>
+          <input type="text" class="form-control" placeholder="@gmail.com" name="email" #email="ngModel"
+          [(ngModel)]="usuarioModel.email" required>
+            <div [hidden]="email.valid || email.pristine"
+              class="alert alert-danger">Se requiere el Correo para Iniciar Sesión.
+
+       </div>
+        <br>
+        <label class="br3">Clave de Acceso</label>
+              <input type="password" class="form-control" placeholder="Password" name="password" #password="ngModel"
+              [(ngModel)]="usuarioModel.password" required>
+              <div [hidden]="password.valid || password.pristine"
+                  class="alert alert-danger">No quites tu Clave de Acceso, la necesitas.
+                </div>
+<div class="text1">
+        <button type="button" class="br1" (click)="login()">Iniciar Sesión</button>
+</div>
+        <br>
+        <div class="div2">
+        <button type="button" class="ghost text2" routerLink="/Inicio">Regresar</button>
+      </div>
+
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+
+        <div class="overlay-panel overlay-right">
+          <h1>¡Bienvenido!</h1>
+          <p>Ingresa tus credenciales correctamente para poder continuar</p>
+          <button type="button" class="ghost" routerLink="/Registro">Crear una Cuenta</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

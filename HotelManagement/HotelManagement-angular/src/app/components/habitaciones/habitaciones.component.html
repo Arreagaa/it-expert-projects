@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+
+<body>
+
+  <!-- ======= hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active" style="background-image: url(https://oceana.com.gt/wp-content/uploads/2018/10/771A5729.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+
+                <h2 class="animate__animated animate__fadeInDown">¡NUESTRO GRAN HOTEL!</h2>
+                <p class="animate__animated animate__fadeInUp">TODO SOBRE NUESTRO AMADO HOTEL</p>
+
+                <a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'" class="btn-get-started scrollto animate__animated animate__fadeInUp" type="button" routerLink="/Usuario/Hoteles">REGRESAR</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+  <main id="main">
+
+  <!-- ======= Inicio de la Vista Cliente ======= -->
+   <section id="services" class="services section-bg" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'">
+    <div class="container" data-aos="fade-up">
+      <!-- ======= About Section ======= -->
+    <div id="about" class="about-area area-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-title">
+              <h2>HOTELERÍA DE CALIDAD</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- single-well start-->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="well-left">
+              <div class="single-well">
+                <a>
+                  <img src="https://p4.wallpaperbetter.com/wallpaper/921/708/937/best-hotels-travel-thailand-tourism-wallpaper-preview.jpg" alt="">
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- single-well end-->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="well-middle">
+              <div class="single-well">
+                <a>
+                  <h4 class="sec-head">{{hotelModelGetId.nombreHotel}}</h4>
+                </a>
+                <p>
+                  Hermoso lugar lleno de vida, ubicado en {{hotelModelGetId.direccion}}, {{hotelModelGetId.pais}}, a la espera de tu llegada, buscamos darte el mejor de los descansos,
+                  aprovecha y quédate con nosotros, disponemos de excelentes habitaciones, conexión a internet rápida y limpieza.
+                <ul>
+                  <li>
+                    <i class="bi bi-check"></i> Conectividad en espacios comunes
+                  </li>
+                  <li>
+                    <i class="bi bi-check"></i> Espacios habilitados para reunirse
+                  </li>
+                  <li>
+                    <i class="bi bi-check"></i> Un centro de negocios bien equipado
+                  </li>
+                  <li>
+                    <i class="bi bi-check"></i> Restaurante de alto nivel
+                  </li>
+                  <li>
+                    <i class="bi bi-check"></i> Espacios confortables
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- End col-->
+        </div>
+      </div>
+    </div><!-- End About Section -->
+    </div>
+  </section><!-- End Services Section -->
+
+  <!-- ======= Inicio de la Vista Administrador Hotel ======= -->
+  <section id="about" class="about" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Hotelería</h2>
+      </div>
+
+      <div class="row content">
+        <div class="col-lg-6">
+          <p>
+            Enfoque en actividades económicas consistentes en la prestación de servicios ligados al alojamiento, hospitalidad y la alimentación esporádicos,
+            muy usualmente ligados al turismo. Como Administrador del Hotel, debes de conocer bien al establecimiento, velar por su bienestar, y el de los Clientes.
+            <br>
+            <br>
+            El proceso administrativo comienza cuando se produce un hecho económico o transacción mercantil en el hotel,
+            que debe ser debidamente registrado hasta finalizar con su inclusión en los estados financieros y estadísticas.
+            La satisfacción del cliente, la optimización de los costes y la innovación están más que nunca en el centro de los desafíos.
+          </p>
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0">
+          <p>
+            Para lograrlo, la industria hotelera debe llevar a cabo una necesaria transformación digital de sus actividades.
+            Las nuevas tecnologías tienen su lugar en la industria hotelera para facilitar la experiencia del cliente y satisfacer mejor sus expectativas.
+            <br>
+            <br>
+            La digitalización del proceso de mantenimiento permite establecer un sistema de alerta automático, útil en todos los niveles del establecimiento.
+            Las herramientas digitales van a extenderse por los hoteles para servir al negocio hotelero.
+            Y nosotros estamos dispuestos a
+            ayudarte.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Us Section -->
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>HABITACIONES</h2>
+    </div>
+
+  </div>
+</section><!-- End Services Section -->
+
+<section class="services section-bg">
+  <div class="container">
+    <button *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'" class="btn btn-primary" type="button"data-bs-toggle="modal" data-bs-target="#modalAgregarRoom">
+      <i class="bi bi-file-earmark-plus"></i> Agregar Habitación</button>
+      <br *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+      <br *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+
+    <div class="row" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+      <div class="card mb-3 text-center" style="max-height: 300px" *ngFor="let room of roomModelGet" >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img ngClass="imagen-card" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/habitacion-hotel-revolve2-1546271048.jpeg" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class="section-title1">
+                <h4 class="card-title" style="text-align: center;" >{{ room.nombreRoom }}</h4>
+              </div>
+              <h6 class="card-title" style="text-align: center;" >{{ room.tipo }}</h6>
+
+              <p class="card-text" style="justify-self: start;">De las mejores habitaciones del Hotel, con bella vista y llena de comodidades, buena decoración, bien equipada, lujosa
+                y elegante, conexión a Internet con línea rápida, baño con ducha, su precio es de {{ room.precio }} USD.</p>
+
+              <p class="card-text" style="text-align:center;" *ngIf="room.disponibilidad == true"><i class="bi bi-person-check-fill"></i> Disponible </p>
+              <p class="card-text" style="text-align:center;" *ngIf="room.disponibilidad != true"><i class="bi bi-person-check-fill"></i> No Disponible </p>
+
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarRoom" (click)="getRoomId(room._id)">
+                  <i class="bi bi-pencil-square"></i> Editar Habitación</button>
+
+                <button class="btn btn-primary" (click)="deleteRoom(room._id)">
+                  <i class="bi bi-file-earmark-minus"></i> Eliminar Habitación</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="row" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'">
+        <div class="card mb-3 text-center" style="max-height: 300px" *ngFor="let room of roomModelGet" >
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img ngClass="imagen-card" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/habitacion-hotel-revolve2-1546271048.jpeg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="section-title1">
+                  <h4 class="card-title" style="text-align: center;" >{{ room.nombreRoom }}</h4>
+                </div>
+                <h6 class="card-title" style="text-align: center;" >{{ room.tipo }}</h6>
+
+                <p class="card-text" style="justify-self: start;">De las mejores habitaciones del Hotel, con bella vista y llena de comodidades, buena decoración, bien equipada, lujosa
+                  y elegante, conexión a Internet con línea rápida, baño con ducha, su precio es de {{ room.precio }} USD.</p>
+
+                  <p class="card-text" style="text-align:center;" *ngIf="room.disponibilidad == true"><i class="bi bi-person-check-fill"></i> Disponible </p>
+                  <p class="card-text" style="text-align:center;" *ngIf="room.disponibilidad != true"><i class="bi bi-person-check-fill"></i> No Disponible </p>
+
+                  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarReserva" *ngIf="room.disponibilidad == true" (click)="getRoomId(room._id)">
+                    <i class="bi bi-calendar2-plus"></i> Reservar</button>
+
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarReserva" *ngIf="room.disponibilidad != true" disabled>
+                      <i class="bi bi-calendar2-plus"></i> Reservar</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+ </div>
+</section>
+
+
+<!-- ======= Cta Section Cliente ======= -->
+<section id="cta" class="cta" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="row">
+      <div class="col-lg-9 text-center text-lg-start">
+        <h3>Cancelar Proceso de Reservación</h3>
+        <p>Es una pena, esperamos que todo haya sido de tu especial agrado, puedes cancelar el proceso de la Reservación o la misma Reservación en cualquier momento, por este medio, volveras
+          a la lista de los Hoteles Asociados de la aplicación.
+        </p>
+      </div>
+      <div class="col-lg-3 cta-btn-container text-center">
+        <!--<a class="cta-btn align-middle" [routerLink]="['/Usuario/ServiciosHotel', hotelModelGet._id]">Ver Servicios</a>-->
+        <a class="cta-btn align-middle" routerLink="/Usuario/Hoteles">Ver Hoteles</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Cta Section -->
+
+<!-- ======= Cta Section Admin Hotel ======= -->
+<section id="cta" class="cta" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="row">
+      <div class="col-lg-9 text-center text-lg-start">
+        <h3>Clientes Hospedados</h3>
+        <p>Como Administrador del Hotel, es debido y correcto llevar el buen orden y control sobre los Clientes que culminaron el proceso de Reservación y que ahora son huéspedes del Hotel
+          o establecimiento, se tiene presente que el Cliente, y su satisfacción va primero, se otorgan servicios de calidad.
+        </p>
+      </div>
+      <div class="col-lg-3 cta-btn-container text-center">
+        <!--<a class="cta-btn align-middle" [routerLink]="['/Usuario/ServiciosHotel', hotelModelGet._id]">Ver Servicios</a>-->
+        <a class="cta-btn align-middle" routerLink="/Hotel/ReservacionesHotel">Ver Huéspedes</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Cta Section -->
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>SERVICIOS</h2>
+    </div>
+
+  </div>
+</section><!-- End Services Section -->
+
+<section class="services section-bg">
+  <div class="container">
+
+    <button *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'" class="btn btn-primary" type="button"data-bs-toggle="modal" data-bs-target="#modalAgregarServicio">
+      <i class="bi bi-file-earmark-plus"></i> Agregar Servicio</button>
+      <br *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+      <br *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+
+    <div class="row">
+      <div class="card mb-3 text-center" style="max-width: 625px" *ngFor="let servicio of servicioModelGet" >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img ngClass="imagen-card" src="https://www.xtrafondos.com/wallpapers/vertical/edificios-en-ciudad-9082.jpg" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class="section-title1">
+                <h4 class="card-title" style="text-align: center;">{{ servicio.servicio }}</h4>
+              </div>
+              <h6 class="card-title" style="text-align: center;" *ngIf="servicio.disponibilidad == true">¡Nuestro Servicio Disponible!</h6>
+              <h6 class="card-title" style="text-align: center;" *ngIf="servicio.disponibilidad != true">¡Nuestro Servicio No Disponible!</h6>
+
+              <br>
+
+              <p class="card-text" style="justify-self: start;">Se pretende triunfar, atrapar clientes y que ellos vuelvan a elegirlos, habrá que escucharlos y prestar atención a
+                sus necesidades, quejas y gustos.
+              </p>
+
+              <p class="card-text" style="text-align:center;"><i class="bi bi-people-fill"></i> Precios desde {{servicio.precio}} USD.</p>
+
+              <span data-tooltip="Modificar al Servicio" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarServicio" (click)="getServicioId(servicio._id)">
+                  <i class="bi bi-pencil-square"></i></button>
+              </span>
+
+              <span data-tooltip="Eliminar al Servicio" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+                <button class="btn btn-primary" (click)="deleteServicio(servicio._id)">
+                  <i class="bi bi-file-earmark-minus"></i></button>
+              </span>
+
+                <button class="btn btn-primary" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE' && servicio.disponibilidad == true" type="button" (click)="getServicioId(servicio._id)"
+                data-bs-toggle="modal" data-bs-target="#modalComprarServicio"><i class="bi bi-building"></i> Agregar a Factura</button>
+
+                <button class="btn btn-primary" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE' && servicio.disponibilidad != true" type="button"
+                disabled><i class="bi bi-building"></i> Agregar a Factura</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ </div>
+</section>
+
+<section id="services" class="services section-bg">
+
+  <!-- ======= Blog Section ======= -->
+  <div id="blog" class="blog-area">
+    <div class="blog-inner area-padding">
+      <div class="blog-overly"></div>
+      <div class="container ">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-title">
+              <h2 href="https://www.vinccihoteles.com/blog-expert/tipos-de-eventos-en-hoteles/" target="_blank">ORGANIZA TU EVENTO</h2>
+            </div>
+          </div>
+        </div>
+        <button *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'" class="btn btn-primary" type="button"data-bs-toggle="modal" data-bs-target="#modalAgregarEvento">
+          <i class="bi bi-file-earmark-plus"></i> Agregar Evento</button>
+          <br><br>
+
+        <div class="row">
+          <!-- Start Left Blog -->
+          <div class="col-md-4 col-sm-4 col-xs-12" style="padding-bottom: 30px;" *ngFor="let evento of eventoModelGet">
+            <div class="single-blog">
+              <div class="single-blog-img">
+                <a>
+                  <img src="https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2018/08/Celebrar-las-fiestas-patrias-2.jpeg?fit=2048%2C1365&ssl=1" alt="">
+                </a>
+              </div>
+              <br>
+              <div class="blog-text">
+                <h4>
+                  <a>{{ evento.evento }}</a>
+                </h4>
+                <p style="text-align: justify;" *ngIf="evento.disponibilidad == true">
+                  {{evento.descripcion}}. Si has decidido realizar tu evento en un hotel, somos los indicados con el mejor servicio, mejor capacidad y más comodidades.
+                  Recuerda que debe ser un lugar vistoso. Precio desde {{evento.precio}} USD. Evento y Espacio Disponible.
+                </p>
+
+                <p style="text-align: justify;" *ngIf="evento.disponibilidad != true">
+                  {{evento.descripcion}}. Si has decidido realizar tu evento en un hotel, somos los indicados con el mejor servicio, mejor capacidad y más comodidades.
+                  Recuerda que debe ser un lugar vistoso. Evento y Espacio No Disponible. Precio desde {{evento.precio}} USD.
+                </p>
+              </div>
+              <span>
+                <a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE' && evento.disponibilidad == true" class="ready-btn" data-bs-toggle="modal" data-bs-target="#modalComprarEvento" (click)="getEventoId(evento._id)">Agregar a Factura</a>
+              </span>
+
+              <span disabled>
+                <a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE' && evento.disponibilidad != true" class="ready-btn" style="opacity: 0.5;" disabled>Agregar a Factura</a>
+              </span>
+
+              <span>
+                <a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'" data-bs-toggle="modal" data-bs-target="#modalEditarEvento" (click)="getEventoId(evento._id)" class="ready-btn">Editar Evento</a>
+              </span>
+
+              <span>
+                <a *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'" (click)="deleteEvento(evento._id)" class="ready-btn" >Eliminar Evento</a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div><!-- End Blog Section -->
+</section><!-- End Services Section -->
+
+
+<!--Modal Agregar Room-->
+<div class="modal fade" id="modalAgregarRoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Agregar Habitación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm">
+
+          <div class="mb-3">
+            <label for="inputNombreRoom" class="form-label">Nombre de la Habitación</label>
+            <input placeholder="Grand Suite" type="text" class="form-control" name="nombreRoom" #nombreRoom="ngModel" required
+            [(ngModel)]="roomlModelPost.nombreRoom">
+              <div [hidden]="nombreRoom.valid || nombreRoom.pristine"
+                class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputTipo" class="form-label">Tipo de Habitación</label>
+            <input placeholder="Suite" type="text" class="form-control" name="tipo" #tipo="ngModel" required
+            [(ngModel)]="roomlModelPost.tipo">
+              <div [hidden]="tipo.valid || tipo.pristine"
+                class="alert alert-danger">Se requiere colocar el Tipo para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Precio de la Habitación</label>
+            <input placeholder="USD" type="number" class="form-control" name="precio" #precio="ngModel" required
+            [(ngModel)]="roomlModelPost.precio">
+              <div [hidden]="precio.valid || precio.pristine"
+                class="alert alert-danger">Se requiere colocar el Precio Base para continuar.
+              </div>
+          </div>
+
+          <!--<div class="mb-3">
+            <label for="inputIdHotel" class="form-label">Confirmación del Hotel</label>
+            <input placeholder="Identifación" type="text" class="form-control" name="idHotel" #idHotel="ngModel" required
+            [(ngModel)]="roomlModelPost.idHotel">
+              <div [hidden]="idHotel.valid || idHotel.pristine"
+                class="alert alert-danger">Se requiere colocar la Hotel Base para continuar.
+              </div>
+          </div>-->
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postRooms(addForm)" data-bs-dismiss="modal">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Editar Room-->
+<div class="modal fade" id="modalEditarRoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Editar Datos de la Habitación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="mb-3">
+            <label for="inputNombreRoom" class="form-label">Nombre de la Habitación</label>
+            <input placeholder="Grand Suite" type="text" class="form-control" name="nombreRoom" #nombreRoom="ngModel" required
+            [(ngModel)]="roomModelGetId.nombreRoom">
+              <div [hidden]="nombreRoom.valid || nombreRoom.pristine"
+                class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputTipo" class="form-label">Tipo de Habitación</label>
+            <input placeholder="Suite" type="text" class="form-control" name="tipo" #tipo="ngModel" required
+            [(ngModel)]="roomModelGetId.tipo">
+              <div [hidden]="tipo.valid || tipo.pristine"
+                class="alert alert-danger">Se requiere colocar el Tipo para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Precio de la Habitación</label>
+            <input placeholder="USD" type="number" class="form-control" name="precio" #precio="ngModel" required
+            [(ngModel)]="roomModelGetId.precio">
+              <div [hidden]="precio.valid || precio.pristine"
+                class="alert alert-danger">Se requiere colocar el Precio Base para continuar.
+              </div>
+          </div>
+
+          <!--<div class="mb-3">
+            <label for="inputDisponibilidad" class="form-label">Disponibilidad de la Habitación</label>
+            <input placeholder="Disponible" type="text" class="form-control" name="disponibilidad" #disponibilidad="ngModel" required
+            [(ngModel)]="roomModelGetId.disponibilidad">
+              <div [hidden]="disponibilidad.valid || disponibilidad.pristine"
+                class="alert alert-danger">Se requiere colocar la Disponibilidad para continuar.
+              </div>
+          </div>-->
+
+          <div class="form-group">
+            <label for="SelectDisponibilidad">Disponibilidad de la Habitación</label>
+            <select id="disponibilidad" style="width:100%; height: 2rem;" name="disponibilidad" #disponibilidad="ngModel"
+            [(ngModel)]="roomModelGetId.disponibilidad" required>
+            <option value="true">Disponible</option>
+            <option value="false">No Disponible</option>
+          </select>
+
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="putRooms()" data-bs-dismiss="modal">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Agregar Evento-->
+<div class="modal fade" id="modalAgregarEvento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Agregar Evento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm">
+
+          <div class="mb-3">
+            <label for="inputNombreEvento" class="form-label">Nombre del Evento</label>
+            <input placeholder="Boda de Ensueño" type="text" class="form-control" name="evento" #evento="ngModel" required
+            [(ngModel)]="eventolModelPost.evento">
+              <div [hidden]="evento.valid || evento.pristine"
+                class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputDescripcion" class="form-label">Descripción del Evento</label>
+            <input placeholder="Descripción" type="text" class="form-control" name="descripcion" #descripcion="ngModel" required
+            [(ngModel)]="eventolModelPost.descripcion">
+              <div [hidden]="descripcion.valid || descripcion.pristine"
+                class="alert alert-danger">Se requiere colocar la Descripción para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Precio del Evento</label>
+            <input placeholder="USD" type="number" class="form-control" name="precio" #precio="ngModel" required
+            [(ngModel)]="eventolModelPost.precio">
+              <div [hidden]="precio.valid || precio.pristine"
+                class="alert alert-danger">Se requiere colocar la Precio Base para continuar.
+              </div>
+          </div>
+
+          <!--<div class="mb-3">
+            <label for="inputIdHotel" class="form-label">Confirmación del Hotel</label>
+            <input placeholder="Identifación" type="text" class="form-control" name="idHotel" #idHotel="ngModel" required
+            [(ngModel)]="eventolModelPost.idHotel">
+              <div [hidden]="idHotel.valid || idHotel.pristine"
+                class="alert alert-danger">Se requiere colocar la Hotel Base para continuar.
+              </div>
+          </div>-->
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postEventos(addForm)" data-bs-dismiss="modal">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Editar Evento-->
+<div class="modal fade" id="modalEditarEvento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Editar Datos del Evento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="mb-3">
+            <label for="inputNombreEvento" class="form-label">Nombre del Evento</label>
+            <input placeholder="Grand Suite" type="text" class="form-control" name="evento" #evento="ngModel" required
+            [(ngModel)]="eventoModelGetId.evento">
+              <div [hidden]="evento.valid || evento.pristine"
+                class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputDescripcion" class="form-label">Descripción del Evento</label>
+            <input placeholder="Suite" type="text" class="form-control" name="descripcion" #descripcion="ngModel" required
+            [(ngModel)]="eventoModelGetId.descripcion">
+              <div [hidden]="descripcion.valid || descripcion.pristine"
+                class="alert alert-danger">Se requiere colocar la Descripción para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Precio de la Habitación</label>
+            <input placeholder="USD" type="number" class="form-control" name="precio" #precio="ngModel" required
+            [(ngModel)]="eventoModelGetId.precio">
+              <div [hidden]="precio.valid || precio.pristine"
+                class="alert alert-danger">Se requiere colocar el Precio Base para continuar.
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="SelectDisponibilidad">Disponibilidad del Evento</label>
+            <select id="disponibilidad" style="width:100%; height: 2rem;" name="disponibilidad" #disponibilidad="ngModel"
+            [(ngModel)]="eventoModelGetId.disponibilidad" required>
+            <option value="true">Disponible</option>
+            <option value="false">No Disponible</option>
+          </select>
+
+        </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="putEventos()" data-bs-dismiss="modal">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Agregar Servicio-->
+<div class="modal fade" id="modalAgregarServicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Agregar Servicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (reset)="addForm">
+
+          <div class="mb-3">
+            <label for="inputNombreServicio" class="form-label">Nombre del Servicio</label>
+            <input placeholder="Restaurante" type="text" class="form-control" name="servicio" #servicio="ngModel" required
+            [(ngModel)]="servicioModelPost.servicio">
+              <div [hidden]="servicio.valid || servicio.pristine"
+                class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Precio del Servicio</label>
+            <input placeholder="USD" type="number" class="form-control" name="precio" #precio="ngModel" required
+            [(ngModel)]="servicioModelPost.precio">
+              <div [hidden]="precio.valid || precio.pristine"
+                class="alert alert-danger">Se requiere colocar la Precio Base para continuar.
+              </div>
+          </div>
+
+          <!--<div class="mb-3">
+            <label for="inputIdHotel" class="form-label">Confirmación del Hotel</label>
+            <input placeholder="Identifación" type="text" class="form-control" name="idHotel" #idHotel="ngModel" required
+            [(ngModel)]="servicioModelPost.idHotel">
+              <div [hidden]="idHotel.valid || idHotel.pristine"
+                class="alert alert-danger">Se requiere colocar la Hotel Base para continuar.
+              </div>
+          </div>-->
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postServicios(addForm)" data-bs-dismiss="modal">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Editar Servicio-->
+<div class="modal fade" id="modalEditarServicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Editar Datos del Servicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="mb-3">
+            <label for="inputNombreServicio" class="form-label">Nombre del Servicio</label>
+            <input placeholder="Restaurante" type="text" class="form-control" name="servicio" #servicio="ngModel" required
+            [(ngModel)]="servicioModelGetId.servicio">
+              <div [hidden]="servicio.valid || servicio.pristine"
+                class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Precio del Servicio</label>
+            <input placeholder="USD" type="number" class="form-control" name="precio" #precio="ngModel" required
+            [(ngModel)]="servicioModelGetId.precio">
+              <div [hidden]="precio.valid || precio.pristine"
+                class="alert alert-danger">Se requiere colocar la Precio Base para continuar.
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="SelectDisponibilidad">Disponibilidad del Servicio</label>
+            <select id="disponibilidad" style="width:100%; height: 2rem;" name="disponibilidad" #disponibilidad="ngModel"
+            [(ngModel)]="servicioModelGetId.disponibilidad" required>
+            <option value="true">Disponible</option>
+            <option value="false">No Disponible</option>
+          </select>
+
+        </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="putServicios()" data-bs-dismiss="modal">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Agregar Reserva-->
+<div class="modal fade" id="modalAgregarReserva" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Agregar Reserva</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm">
+
+          <div class="mb-3">
+            <label for="inputFechaInicio" class="form-label">Fecha de Inicio</label>
+            <input placeholder="Hospedaje" type="date" class="form-control" name="fechaInicio" #fechaInicio="ngModel" required
+            [(ngModel)]="reservacionlModelPost.fechaInicio">
+              <div [hidden]="fechaInicio.valid || fechaInicio.pristine"
+                class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputTotalNoches" class="form-label">Noches de Hospedaje</label>
+            <input placeholder="Suite" type="number" class="form-control" name="totalNoches" #totalNoches="ngModel" required
+            [(ngModel)]="reservacionlModelPost.totalNoches">
+              <div [hidden]="totalNoches.valid || totalNoches.pristine"
+                class="alert alert-danger">Se requiere colocar la cantidad de Noches para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputIdHotel" class="form-label">Confirmación del Hotel</label>
+            <input placeholder="Identifación" type="text" class="form-control" name="idHotel" #idHotel="ngModel" required
+            [(ngModel)]="hotelModelGetId._id && reservacionlModelPost.idHotel" disabled="disable">
+              <div [hidden]="idHotel.valid || idHotel.pristine"
+                class="alert alert-danger">Se requiere colocar la Hotel Base para continuar.
+              </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postReserva(addForm, idRoom)" data-bs-dismiss="modal">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Comprar Servicio-->
+<div class="modal fade" id="modalComprarServicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Comprar Servicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm">
+
+          <div class="mb-3">
+            <label for="inputServicio" class="form-label">Confirmación del Nombre Servicio</label>
+            <input placeholder="Nombre Servicio" type="text" class="form-control" name="servicio" #servicio="ngModel" required
+            [(ngModel)]="servicioModelGetId.servicio" disabled="disable">
+              <div [hidden]="servicio.valid || servicio.pristine"
+                class="alert alert-danger">Se requiere colocar el nombre del Servicio para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Confirmación Precio del Servicio</label>
+            <input placeholder="USD" type="number" class="form-control" name="precio" #precio="ngModel" required
+            [(ngModel)]="servicioModelGetId.precio" disabled="disable">
+              <div [hidden]="precio.valid || precio.pristine"
+                class="alert alert-danger">Se requiere colocar el precio del Servicio para continuar.
+              </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postCompraServicio(addForm, idServicio)" data-bs-dismiss="modal">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Comprar Evento-->
+<div class="modal fade" id="modalComprarEvento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Comprar Evento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm">
+
+          <div class="mb-3">
+            <label for="inputEvento" class="form-label">Confirmación del Nombre Evento</label>
+            <input placeholder="Nombre Evento" type="text" class="form-control" name="evento" #evento="ngModel" required
+            [(ngModel)]="eventoModelGetId.evento" disabled="disable">
+              <div [hidden]="evento.valid || evento.pristine"
+                class="alert alert-danger">Se requiere colocar el nombre del Servicio para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Confirmación Precio del Servicio</label>
+            <input placeholder="USD" type="number" class="form-control" name="precio" #precio="ngModel" required
+            [(ngModel)]="eventoModelGetId.precio" disabled="disable">
+              <div [hidden]="precio.valid || precio.pristine"
+                class="alert alert-danger">Se requiere colocar el precio del Servicio para continuar.
+              </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postCompraEvento(addForm, idEvento)" data-bs-dismiss="modal">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+</main>
+</body>
+</html>

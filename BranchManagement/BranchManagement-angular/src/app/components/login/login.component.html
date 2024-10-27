@@ -1,0 +1,40 @@
+<div class="sidenav">
+  <div class="login-main-text">
+    <h2>Administración de la Empresa<br> Inicia Sesión</h2>
+      <h3>Iniciando Sesión podras continuar.</h3>
+  </div>
+</div>
+<div class="main">
+  <div class="col-md-6 col-sm-12">
+     <div class="login-form">
+        <form>
+
+          <div class="form-group">
+              <label>Ingresa tu Usuario o Correo</label>
+              <input type="text" class="form-control" placeholder="@gmail.com" name="email" #email="ngModel"
+              [(ngModel)]="usuarioModel.email" required>
+                <div [hidden]="email.valid || email.pristine"
+                  class="alert alert-danger">Se requiere el Correo para Iniciar Sesión.
+                </div>
+           </div>
+           <br>
+
+           <div class="form-group">
+              <label>Clave de Acceso</label>
+              <input type="password" class="form-control" placeholder="Password" name="password" #password="ngModel"
+              [(ngModel)]="usuarioModel.password" required>
+              <div [hidden]="password.valid || password.pristine"
+                  class="alert alert-danger">No quites tu Clave de Acceso, la necesitas.
+                </div>
+           </div>
+
+           <br>
+           <button type="button" class="btn btn-black btn-lg" (click)="login()">Iniciar Sesión</button>
+           <br>
+           <br>
+           <button type="button" class="btn btn-primary btn-lg" routerLink="/Registro">¿No tienes una cuenta?</button>
+        </form>
+     </div>
+  </div>
+</div>
+

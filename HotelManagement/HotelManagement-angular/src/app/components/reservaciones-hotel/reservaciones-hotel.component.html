@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+
+<body>
+
+  <!-- ======= hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active" style="background-image: url(https://cdn.forbes.com.mx/2022/06/verano-hoteles-europa.gif)">
+            <div class="carousel-container">
+              <div class="container">
+
+                <h2 class="animate__animated animate__fadeInDown">¡NUESTRO GRAN HOTEL!</h2>
+                <p class="animate__animated animate__fadeInUp">NUESTORS QUERIDOS HUÉSPEDES</p>
+
+                <a class="btn-get-started scrollto animate__animated animate__fadeInUp" type="button" routerLink="/Hotel/Habitaciones">REGRESAR</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+  <main id="main">
+
+  <!-- ======= Inicio de la Vista Administrador Hotel ======= -->
+  <section id="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Huéspedes</h2>
+      </div>
+
+      <div class="row content">
+        <div class="col-lg-6">
+          <p>
+            Es correcto y valioso agradecer que haya elegido nuestro hotel, en dado caso, agradecer que se haya molestado en publicar un comentario independiente del motivo
+            o calidad del comentario, incluso si este no es positivo, las críticas, nos sirven para mejor y seguir avanzando como Familia Hotelera.
+            <br>
+            <br>
+            Este es el vínculo entre el huésped y todos los servicios que ofrece el hotel. Lograr una identificación por parte del huésped como el departamento donde podrá obtener completa satisfacción
+            a sus necesidades, requerimientos especiales y solución a sus problemas.
+          </p>
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0">
+          <p>
+            Los Recepcionistas de Hotel dan la bienvenida y atienden a los huéspedes al llegar al hotel y a lo largo de su estancia en el establecimiento. Sus deberes incluyen
+            registrar la entrada y salida de los huéspedes, entregar las llaves, realizar reservaciones, preparar recibos y cobrar las facturas correspondientes.
+            <br>
+            <br>
+            El huésped es la razón de ser de un hotel y por ese motivo merece toda la atención. En este artículo encontrará las recomendaciones de expertos que le ayudarán a mejorar el
+            servicio para todos los tipos de clientes que se pueden alojar en su establecimiento.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Us Section -->
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>reservaciones</h2>
+    </div>
+
+    <section class="services section-bg">
+      <div class="container">
+        <div class="input-group">
+          <input  [(ngModel)]="buscarCliente" type="Buscar" class="form-control rounded" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon" />
+          <button type="button" class="btn btn-outline-primary">Buscar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section-bg">
+      <div class="container">
+        <button type="button" class="btn btn-outline-primary"  (click)="getReservaPdf()"> Reporte Reservaciones</button>
+          <br><br><br>
+        <div class="row">
+
+          <div class="card mb-3 text-center" style="max-width: 625px" *ngFor="let reserva of reservacionModelGet | buscarCliente: buscarCliente" >
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img ngClass="imagen-card" src="https://www.xtrafondos.com/wallpapers/vertical/edificios-en-ciudad-9082.jpg" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="section-title1">
+                    <h4 class="card-title" style="text-align: center;">Cliente</h4>
+                  </div>
+                  <h6 class="card-title" style="text-align: center;"><i class="bi bi-people-fill"></i> {{ reserva.idUsuario }}.</h6>
+                  <br>
+
+                  <p class="card-text" style="justify-self: start;">Un Huésped de Maravilla, sabe cómo tratar a las demás personas, se agradece calidamente su preferencia.
+                    <br><br>
+                    Inicia su estadía con nosotros el {{ reserva.fechaInicio }}.
+                  </p>
+
+                  <p class="card-text" style="text-align:center;">Se hospeda por {{ reserva.totalNoches }} noches.</p>
+                  <br>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+     </div>
+    </section>
+  </div>
+</section><!-- End Services Section -->
+
+
+<app-footer></app-footer>
+</main>
+</body>
+</html>

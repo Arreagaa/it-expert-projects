@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+
+<body>
+
+
+  <!-- ======= hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active" style="background-image: url(https://static.barcelo.com/content/dam/bhg/master/es/hoteles/guatemala/guatemala-city/barcelo-guatemala-city/main-photos/hotel/BGUA_VIEW_01.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+
+                <h2 class="animate__animated animate__fadeInDown">¡VISITA LOS MEJORES HOTELES A PRECIOS INCREÍBLES!</h2>
+                <p class="animate__animated animate__fadeInUp">ENCUENTRA TU PRÓXIMO ALOJAMIENTO </p>
+
+
+                <a routerLink="/Login" class="btn-get-started scrollto animate__animated animate__fadeInUp"type="button">¡EMPIEZA YA!</a>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+  <main id="main">
+
+    <!-- ======= Clients Section ======= -->
+   <section id="clients" class="clients section-bg">
+    <div class="container">
+
+      <div class="row" data-aos="zoom-in">
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://hsancarlos.com/wp-content/uploads/2019/05/Logopng.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://www.caminorealantigua.com.gt/wp-content/uploads/2019/01/logo_CRAntigua_final.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://www.hotelcasaveranda.com/uploads/9/8/6/9/98696210/logo-scroll_3.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://static.wixstatic.com/media/b30165_fcbe561916e7482d8cfc1d8c07f47571~mv2.png/v1/fit/w_2500,h_1330,al_c/b30165_fcbe561916e7482d8cfc1d8c07f47571~mv2.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://hotelfontabella.com/wp-content/uploads/2022/04/LOGO-HOTEL-2.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://casapopenoe.ufm.edu/festivalaguacate2018/wp-content/uploads/2017/10/casablanca_logo.png" class="img-fluid" alt="">
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Cliens Section -->
+
+
+   <!-- ======= Services Section ======= -->
+   <section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>HOTELES ASOCIADOS</h2>
+        <p>Busca y Visita los mejores Hoteles, tendrá información concreta sobre los establecimientos, todos estos Hoteles son
+          asociados con el sitio, puede verlos, conocer los datos más relevantes, así mismo buscar a los Hoteles por su nombre o bien por su dirección. Esperamos que todo sea de su especial agrado.
+        </p>
+      </div>
+    </div>
+  </section><!-- End Services Section -->
+
+  <section class="services section-bg">
+    <div class="container">
+      <div class="input-group">
+        <input  [(ngModel)]="buscar" type="Buscar" class="form-control rounded" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon" />
+        <button type="button" class="btn btn-outline-primary">Buscar</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="services section-bg">
+  <div class="container">
+  <div class="row">
+    <div class="card mb-3 text-center" style="max-height: 300px" *ngFor="let hotel of hotelModelGet | buscar:buscar" >
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img ngClass="imagen-card" src="https://live.staticflickr.com/65535/51915945930_9c9f3a68c9_6k.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="section-title1">
+              <h4 class="card-title" style="text-align: center;" >{{ hotel.nombreHotel }}</h4>
+            </div>
+            <h6 class="card-title" style="text-align: center;" >{{ hotel.email }}</h6>
+
+            <p class="card-text" style="justify-self: start;">Dicho establecimiento se encuentra en {{ hotel.direccion }}, {{ hotel.pais }}. Poseen un excelente servicio,
+              siempre al tanto de sus clientes, precios desde {{ hotel.precioHabitacion }} USD.</p>
+
+            <p class="card-text" style="text-align:center;">¡Llama ya al {{ hotel.telefono }}!</p>
+
+            <form>
+              <p class="clasificacion">
+                <input id="radio1" type="radio" name="estrellas" value="5">
+                <label for="radio1">★</label>
+                <input id="radio2" type="radio" name="estrellas" value="4">
+                <label for="radio2">★</label>
+                <input id="radio3" type="radio" name="estrellas" value="3">
+                <label for="radio3">★</label>
+                <input id="radio4" type="radio" name="estrellas" value="2">
+                <label for="radio4">★</label>
+                <input id="radio5" type="radio" name="estrellas" value="1">
+                <label for="radio5">★</label>
+              </p>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="services" class="services section-bg">
+
+  <div id="portfolio" class="portfolio-area area-padding fix">
+    <div class="container">
+      <div class="row">
+    <div class="section-title">
+      <h2>GALERÍA DE FOTOGRAFÍAS</h2>
+    </div>
+  </div>
+
+  <div class="row awesome-project-content portfolio-container">
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/90/e4/e6/hotel-facade.jpg?w=900&h=-1&s=1" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>Entrada del Hotel</h4>
+              <span>InterContinental Tegucigalpa</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://www.cleantecsoftware.com/images/hotel_3.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>Hoteles de Lujo</h4>
+              <span>Piscina, Spa y Mucho más</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://www.hiltonhotels.com/assets/img/Hotel%20Images/Hilton/G/GUALLHH/GUALLHH_full_8502365.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>La Belleza de Guatemala</h4>
+              <span>Hoteles y Servicios de Calidad</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://images.e-tsw.com/_lib/b2b2c-sites/amr/dreamsmx/img/resorts/riviera-cancun/accommodations/slider/1.jpg?v1" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>Las Mejores Habitaciones</h4>
+              <span>Disfruta de la Comodidad</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://p4.wallpaperbetter.com/wallpaper/750/566/555/costa-adeje-gran-hotel-4k-hd-computer-desktop-wallpaper-preview.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery" >
+              <h4>Intalaciones Preciosas</h4>
+              <span>Lugares Inolvidables</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://viajesdeunchapin.com/wp-content/uploads/2022/01/porta-hotel-del-lago-habitacion-con-vista-al-lago.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery" >
+              <h4>Cultura y Tradiciones</h4>
+              <span>Visita y Descansa</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section><!-- End Services Section -->
+<app-footer></app-footer>
+</main>
+</body>
+</html>

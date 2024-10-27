@@ -1,0 +1,58 @@
+body{
+  background: linear-gradient(to right, #6793F4, #6793F4);
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 18px;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+  }
+
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+#inputNombre{
+  font-size: 18px;
+}
+
+#form3Example8{
+  font-size: 18px;
+}
+
+#inputEmail{
+  font-size: 18px;
+}
+
+#inputPassword{
+  font-size: 18px;
+}
+
+.img{
+  max-height: max-content;
+}
+
+.btn-primary{
+  background-color: #6793F4 !important;
+  color: #fff;
+}
+
+.btn-primary-r{
+  background-color: #FFF;
+  color: black;
+  font-size: 18px;
+}
+
+.h3{
+font-size: 40px;
+color: #00305B;
+text-align: center;
+}
+
+.texto{
+  font-size: 18px;
+  color: #00305B;
+}

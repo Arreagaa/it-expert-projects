@@ -1,0 +1,202 @@
+<html>
+  <body>
+    <div class="container">
+      <br>
+
+      <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresa"><i class="bi bi-file-earmark-plus"></i>
+          Agregar Empresa
+      </button>
+<br>
+   <br>
+
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" lg-12>
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="https://ellevo.com/es/wp-content/uploads/sites/3/2018/09/06-csc-em-grandes-empresas.jpg"  class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h2 style="color:white">Apartados de Empresas  </h2>
+              <p style="color:white">Datos importatntes de las empresas de forma detallada</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://fondosmil.com/fondo/71316.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h2 class="color-white" >Amigable con el usuario</h2>
+              <p >Fácil utilización para que puedas ver toda la información de forma sencilla </p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://blogthinkbig.com/wp-content/uploads/sites/4/2019/08/skyscraper-3094696_1920-e1564656071183.jpg?fit=1800%2C667" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h2 style="color:white">Puede verificar sucursales de forma concreta</h2>
+              <p style="color:white"> Podremos ver las sucursales que posee de cada empresa</p>
+            </div>
+          </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="card text-white bg my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">Puedes interactuar con las Empresas, desde modificarlas hasta ver sus suscursales, todo como Administrador.</p></div>
+    </div>
+<br>
+      <div class="row">
+        <div class="col-12 col-md-4" *ngFor="let emp of empresaModelGet">
+          <div class="card text-center mb-3">
+            <div class="card mb-2" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="https://p4.wallpaperbetter.com/wallpaper/202/251/688/building-architecture-vertical-wallpaper-preview.jpg" class="img-fluid rounded-start" alt="">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title" routerLinkActive="active">{{ emp.nombre }}</h5>
+                    <p class="card-text">Empresa de tipo {{emp.tipo}}, esta ubicada en el Municipio de {{emp.municipio}}, Guatemala.
+                    </p>
+                    <p class="card-text"><small class="text-muted">Contacto por {{ emp.email }}</small></p>
+                    <div class="space md-4">
+                      <a type="button" class="card-link" data-bs-toggle="modal" data-bs-target="#modalEditarEmpresa" (click)="getEmpresaId(emp._id)"><i class="bi bi-pencil-square"></i> Modificar</a>
+                      <a [routerLink]="['/Admin/Dashboard', emp._id]" class="card-link" routerLinkActive="active"> <i class="bi bi-shop"></i> Sucuarsales</a>
+                     <!-- <a [routerLink]="['/verEmpresa', emp._id]" class="card-link" routerLinkActive="active"> <i class="bi bi-shop"></i> Sucuarsales</a>-->
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="deleteEmpresa(emp._id)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Modal Agregar Empresa-->
+    <div class="modal fade" id="modalAgregarEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #6793F4">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: white">Agregar Empresa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form #addForm="ngForm">
+
+              <div class="mb-3">
+                <label for="inputNombre" class="form-label">Nombre de la Empresa</label>
+                <input placeholder="Taco Bell" type="text" class="form-control" name="nombre" #nombre="ngModel" required
+                [(ngModel)]="empresaModelPost.nombre">
+                  <div [hidden]="nombre.valid || nombre.pristine"
+                    class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+                  </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="inputEmail" class="form-label">Correo de Contacto</label>
+                <input  placeholder="Taco@gmail.com" type="email" class="form-control" name="email" #email="ngModel"
+                [(ngModel)]="empresaModelPost.email" required>
+                  <div [hidden]="email.valid || email.pristine"
+                    class="alert alert-danger">Coloca un Correo de Contacto para continuar.
+                  </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="inputPassword" class="form-label">Clave de Acceso</label>
+                <input type="password" class="form-control" placeholder="Tu clave de Acceso" name="password" #password="ngModel"
+                [(ngModel)]="empresaModelPost.password" required>
+                  <div [hidden]="password.valid || password.pristine"
+                    class="alert alert-danger">Coloca una Clave de Acceso para continuar.
+                  </div>
+              </div>
+
+              <div>
+                <div class="mb-3">
+                  <label for="inputTipo" class="form-label">Tipo de Empresa</label>
+                <input type="select" class="form-control" placeholder="Restaurante" name="tipo" #tipo="ngModel"
+                [(ngModel)]="empresaModelPost.tipo" required>
+                <div [hidden]="tipo.valid || tipo.pristine"
+                    class="alert alert-danger">Específica que tipo de Empresa es, para continuar.
+                  </div>
+              </div>
+              </div>
+
+              <div>
+                <div class="mb-3">
+                  <label for="inputMunicipio" class="form-label">Municipio o Ubicación</label>
+                <input type="select" class="form-control" placeholder="Guatemala" name="municipio" #municipio="ngModel"
+                [(ngModel)]="empresaModelPost.municipio" required>
+                <div [hidden]="municipio.valid || municipio.pristine"
+                    class="alert alert-danger">Indica donde se encuentra la Empresa..
+                  </div>
+              </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="postEmpresas(addForm)" data-bs-dismiss="modal">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Modal Editar Empresa-->
+    <div class="modal fade" id="modalEditarEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #6793F4">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: white">Editar Datos de la Empresa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+
+              <div class="mb-3">
+                <label for="inputNombre" class="form-label">Editar Nombre de la Empresa</label>
+                <input placeholder="Taco Bell" type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+                [(ngModel)]="empresaModelId.nombre" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="inputEmail" class="form-label">Correo de Contacto</label>
+                <input placeholder="Taco@gmail.com" type="email" class="form-control" id="inputEmail" name="email" #email="ngModel"
+                [(ngModel)]="empresaModelId.email" required>
+              </div>
+
+              <div>
+                <div class="mb-3">
+                  <label for="inputTipo" class="form-label">Tipo de Empresa</label>
+                <input type="select" class="form-control" placeholder="Restaurante" id="inputTipo" name="tipo" #tipo="ngModel"
+                [(ngModel)]="empresaModelId.tipo" required>
+              </div>
+              </div>
+
+              <div>
+                <div class="mb-3">
+                  <label for="inputMunicipio" class="form-label">Municipio o Ubicación</label>
+                <input type="select" class="form-control" placeholder="Guatemala" id="inputMunicipio" name="municipio" #municipio="ngModel"
+                [(ngModel)]="empresaModelId.municipio" required>
+              </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="putEmpresa()" data-bs-dismiss="modal">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>

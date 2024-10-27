@@ -1,0 +1,65 @@
+body {
+  background: rgb(99, 39, 120);
+    font-family: 'DM Sans', sans-serif;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #9cb4dde6
+}
+
+.profile-button {
+  background: #283a5ae6;
+  box-shadow: none;
+  border: none;
+  display: inline;
+  margin-right: 20px;
+}
+
+.profile-button:hover {
+  background: #9cb4dde6;
+}
+
+.profile-button:focus {
+  background: #283a5ae6;
+  box-shadow: none
+}
+
+.profile-button:active {
+  background: #283a5ae6;
+  box-shadow: none
+}
+
+.back:hover {
+  color: #283a5ae6;
+  cursor: pointer
+}
+
+.labels {
+  margin-top: 10px;
+  font-size: 18px
+}
+
+.add-experience:hover {
+  background: #283a5ae6;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #283a5ae6
+}
+
+.form-control{
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.font-weight-bold{
+  font-size: 18px;
+}
+
+.text-black-50{
+  font-size: 16px;
+}
+
+.historial {
+  font-size: 20px;
+}

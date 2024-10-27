@@ -1,0 +1,200 @@
+
+/* never mind */
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+* {margin:0;padding:0;border:0 none;position:relative;}
+body {
+	width: 100vw;
+	font-family: 'El Messiri', sans-serif;
+	font-weight: 400;
+}
+
+/* magic scroll */
+.perspective {
+	background-image: url('https://www.siblatam.com/wp-content/uploads/2022/01/La-fusio%CC%81n-de-empresas-clases-y-procedimiento.jpg');
+	background-size: cover;
+	background-position: top center;
+    width: 100vw;
+    height: 100vh;
+    perspective: 1px;
+    overflow-Y: scroll;
+	  overflow-X: hidden;
+  }
+
+header {
+	background-image: url('https://i.pinimg.com/736x/a6/4c/b9/a64cb99c2632012fa3cb3dd705a0604f.jpg');
+	background-size: cover;
+    transform:
+      matrix3d(
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, -1
+      )
+      translateZ(-2px);
+		width: inherit;
+		height: inherit;
+		display: flex;
+
+  }
+
+/* the grid */
+.wrap {
+		background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0vh, rgba(255,255,255,1) 25vh) ;
+		background-size: 100% 100%;
+		width: inherit;
+	  margin-top: 25vh;
+		padding: 25vh 0 0;
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns:
+    [full-start] minmax(1em, 1fr)
+    [main-start] minmax(0, 60ch)
+		[main-end] minmax(1em, 1fr)
+		[full-end];
+		font-size: 1.5rem;
+  }
+.wrap > * {
+  grid-column: main;
+	margin-top: 2rem;
+	word-break: break-word;
+	hyphens: auto;
+	text-align: justify;
+}
+
+.wrap > .full {
+  grid-column: full;
+	text-align: center;
+}
+@media (min-width: 1100px) {
+	figure {
+			background: #eee;
+			align-items: end;
+			display: inherit;
+			grid-template-columns: inherit;
+	 }
+	.full figcaption {
+    order: -1;
+    text-align: justify;
+}
+	.full img {
+		grid-column: main / full;
+		width: auto;
+		max-width: 100%;
+	}
+	h2 {
+			position: sticky;
+			top: 0;
+	}
+}
+figcaption {
+	max-width: 60ch;
+	word-break: break-word;
+	hyphens: auto;
+	text-align: justify;
+	font-size: 85%;
+	margin: 1rem 1rem 0;
+}
+h1,
+footer h2 {
+	margin: auto;
+	font-size: calc(1rem + 8vmax + 8vmin);
+	font-weight: 600;
+	text-align: center;
+	line-height: .85;
+	color: #fff;
+	filter: drop-shadow(0 0 1px #000);
+	word-break: break-word;
+	hyphens: auto;
+}
+h2 {
+	background: #fff;
+	font-weight: 600;
+	z-index: 1;
+	text-align: center;
+	font-size: calc(.7rem + 2vmax + 2vmin);
+	font-weight: 600;
+	text-align: center;
+	line-height: 1;
+}
+.full img {
+	width: 100vw;
+	height: auto;
+	display: block;
+}
+.full span {
+	position: absolute;
+	bottom: 30%;
+	left: 0;
+	right: 0;
+	text-align: center;
+	color: rgba(255,255,255,.5);
+	font-size: 50vmin;
+	line-height: .2;
+}
+ul {
+	padding-left: 6rem;
+	list-style-type: none;
+	color: #888;
+}
+ul::before {
+	background: #000;
+	content: 'Créditos';
+	position: absolute;
+	left: 0;
+	top: 0;
+	writing-mode: vertical-lr;
+	text-orientation: upright;
+	color: #fff;
+	font-family: monospace;
+	line-height: 1.5;
+	letter-spacing: .4rem;
+	font-weight: 100;
+	padding: 1rem 0 1.5rem;
+}
+a {
+	color: tomato;
+}
+footer{
+	position: fixed;
+	top: 30vh;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+	display: flex;
+}
+footer h2 {
+	background: none;
+	margin: auto;
+	position: sticky;
+	top: 15vh;
+}
+h2 + h3 {
+	opacity: .4;
+	font-weight: 400;
+	font-size: 1.5rem;
+}
+
+.body{
+  font-family: 'Helvetica';
+}
+
+.btn-primary{
+  background-color: #6793F4 !important;
+  color: #fff;
+}
+
+p{
+  text-align: justify;
+}
+
+.text-white{
+  text-align: center;
+}
+
+.bg{
+  background-color: #6793F4;
+  font-size: 18px;
+}
+

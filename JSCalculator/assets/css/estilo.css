@@ -1,0 +1,148 @@
+*{  
+    margin:0;
+    padding:0;
+    font-family: 'Fraunces','serif';
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background: linear-gradient(to right, #9DBDDD, white);
+}
+
+.header {
+    padding: 60px;
+    text-align: center;
+    color: #0C2D4E;
+    font-size: 30px;
+  }
+
+.Calculadora{
+    height: 600px;
+    width: 400px;
+    background-color: #336395;
+    box-shadow: 12px 10px 0px 1px #00000033;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.Display{
+    height: 130px;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: flex;
+    border-radius: 32px;
+    text-align: right;
+    justify-content: space-between;
+    margin: 10px 10px 20px;
+    flex-direction: column;
+    align-items: flex-end; 
+    grid-column: 1/-1;
+    padding: 16px;
+    word-break: break-all;
+    background-color: #152E48;
+    box-shadow: 0px 0px 0px 10px;
+}
+
+.Display span{
+    font-size: 32px;
+}
+
+.Botones{
+    height: 390px;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 97.7px);
+    grid-gap: 3px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    padding: 0;
+    border-radius: 32px;
+    font-size: 24px;
+}
+
+input{
+    font-size: 30px;
+    color: white;
+    border: none;
+}
+
+input:focus{
+    outline: none;
+    border-color: #111111;;
+}
+
+input:hover{
+    filter: brightness(130%);
+}
+
+.operador{
+    cursor: pointer;
+    margin: 5px;
+    padding: 0;
+    border-radius: 32px;
+    font-size: 24px;
+    background-color: #336395;
+    box-shadow: 5px 5px 10px -3px #00000044, -5px -5px 15px 3px #3363951f ;
+}
+
+.opBorrar{
+    cursor: pointer;
+    margin: 5px;
+    padding: 0;
+    border-radius: 32px;
+    font-size: 24px;
+    background-color: #336395;
+    box-shadow: 5px 5px 10px -3px #00000044, -5px -5px 15px 3px #3363951f ;
+}
+
+.opBorrarUno{
+    cursor: pointer;
+    margin: 5px;
+    padding: 0;
+    border-radius: 32px;
+    font-size: 24px;
+    background-color: #336395;
+    box-shadow: 5px 5px 10px -3px #00000044, -5px -5px 15px 3px #3363951f ;
+}
+
+.espacio{
+    grid-column: span 2;
+}
+
+.espacioExtra{
+    grid-column: span 3;
+}
+
+.numero{
+    cursor: pointer;
+    margin: 5px;
+    padding: 0;
+    border-radius: 32px;
+    font-size: 24px;
+    background-color: #336395;
+    box-shadow: 5px 5px 10px -3px #00000044, -5px -5px 15px 3px #3363951f ;
+}
+
+.resultado{
+    cursor: pointer;
+    margin: 5px;
+    padding: 0;
+    border-radius: 32px;
+    font-size: 24px;
+    background-color: #336395;
+    box-shadow: 5px 5px 10px -3px #00000044, -5px -5px 15px 3px #3363951f ;
+}

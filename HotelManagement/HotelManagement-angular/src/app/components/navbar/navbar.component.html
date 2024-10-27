@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">
+    <img src="https://images.vexels.com/media/users/3/224241/isolated/preview/4d2aacf413b02b74c2cdb75ea41f24d3-programacion-de-diple-logo.png" width="40" height="40" alt="">
+  </a>
+  <a class="navbar-brand active" aria-current="page" routerLink="/Inicio">Control de Hoteles</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div  class="collapse navbar-collapse collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+
+    <ul class="navbar-nav">
+
+      <li class="nav-item navbar-nav ml-auto ">
+        <a class="nav-link active pull-xs-right" aria-current="page" routerLink="/Inicio">Inicio</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/DashboardInicio">Nosotros</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/DashboardHoteles">Hoteles</a>
+      </li>
+
+      <li class="nav-item" *ngIf="_usuarioService.obtenerToken()">
+        <a (click)="logOut()" class="nav-link active" aria-current="page" routerLink="/Login" *ngIf=" _usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE' || 'ROL_ADMINISTRADOR'
+        || 'ROL_HOTEL'">Cerrar Sesión</a>
+      </li>
+
+      <li class="nav-item" *ngIf="_usuarioService.obtenerToken()">
+      <button class="profile-btn" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'">
+        <img src="https://live.staticflickr.com/2099/2512672571_fa09ad50f8_h.jpg"/>
+        <span><li class="nav-item">
+          <a class="nav-link" routerLink="/Usuario/PerfilCliente" *ngIf="_usuarioService.obtenerIdentidad()">{{ _usuarioService.obtenerIdentidad().nombre }}</a>
+        </li></span>
+      </button>
+
+      <button class="profile-btn disable" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'">
+        <img src="https://live.staticflickr.com/4511/26177977799_401027e157_c.jpg" />
+        <span><li class="nav-item disable">
+          <a class="nav-link disable" *ngIf="_usuarioService.obtenerIdentidad()">{{ _usuarioService.obtenerIdentidad().nombre }}</a>
+        </li></span>
+      </button>
+
+      <button class="profile-btn disable" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_HOTEL'">
+        <img src="https://live.staticflickr.com/1178/862126715_3c06af772f_h.jpg" />
+        <span><li class="nav-item disable">
+          <a class="nav-link disable" *ngIf="_usuarioService.obtenerIdentidad()">{{ _usuarioService.obtenerIdentidad().nombre }}</a>
+        </li></span>
+      </button>
+    </li>
+
+    </ul>
+  </div>
+</nav>

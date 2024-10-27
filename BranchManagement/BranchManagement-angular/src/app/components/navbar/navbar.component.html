@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">
+    <div class="spinner-grow  float-end text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <!--<img src="http://www.janium.com/wp-content/uploads/2014/07/gears1.png" width="40" height="40" alt="">-->
+  </a>
+  <a class="navbar-brand active" aria-current="page" routerLink="/Inicio">Control de Sucursales</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div  class="collapse navbar-collapse collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+
+    <ul class="navbar-nav">
+
+      <li class="nav-item navbar-nav ml-auto ">
+        <a class="nav-link active pull-xs-right" aria-current="page" routerLink="/Inicio">Inicio</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/DashboardInicio">Nosotros</a>
+      </li>
+
+
+      <li class="nav-item" *ngIf="_usuarioService.obtenerToken()">
+        <a (click)="logOut()" class="nav-link active" aria-current="page" routerLink="/Login" *ngIf=" _usuarioService.obtenerIdentidad().rol === 'ROL_EMPRESA' || 'ROL_ADMINISTRADOR'">Cerrar Sesión</a>
+      </li>
+
+      <li class="nav-item" *ngIf="_usuarioService.obtenerToken()">
+      <button class="profile-btn" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_EMPRESA'">
+        <img src="https://assets.easybroker.com/property_images/1898799/28976279/EB-GG8799.png?version=1607183541" />
+        <span><li class="nav-item">
+          <a class="nav-link disabled" *ngIf="_usuarioService.obtenerIdentidad()">{{ _usuarioService.obtenerIdentidad().nombre }}</a>
+        </li></span>
+      </button>
+
+      <button class="profile-btn" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'">
+        <img src="https://www.aycelaborytax.com/wp-content/uploads/2019/02/tipos-administrador.jpg" />
+        <span><li class="nav-item">
+          <a class="nav-link disabled" *ngIf="_usuarioService.obtenerIdentidad()">{{ _usuarioService.obtenerIdentidad().nombre }}</a>
+        </li></span>
+      </button>
+    </li>
+
+     <!-- <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/Login" >Inicio de Sesión</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/Registro">Registrarse</a>
+      </li>-->
+
+    </ul>
+  </div>
+</nav>

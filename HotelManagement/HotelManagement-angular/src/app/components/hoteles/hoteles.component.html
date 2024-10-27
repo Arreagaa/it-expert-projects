@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+
+<body>
+
+  <!-- ======= hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active" style="background-image: url(https://live.staticflickr.com/65535/51872473502_36872f64b2_6k.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+
+                <h2 class="animate__animated animate__fadeInDown">¡VISITA LOS MEJORES HOTELES A PRECIOS INCREÍBLES!</h2>
+                <p class="animate__animated animate__fadeInUp">ENCUENTRA TU PRÓXIMO ALOJAMIENTO </p>
+
+                <a class="btn-get-started scrollto animate__animated animate__fadeInUp" type="button"data-bs-toggle="modal" data-bs-target="#modalAgregarHotel"
+                *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'"><i class="bi bi-file-earmark-plus"></i> AGREGAR HOTEL</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+  <main id="main">
+
+    <!-- ======= Clients Section ======= -->
+   <section id="clients" class="clients section-bg">
+    <div class="container">
+
+      <div class="row" data-aos="zoom-in">
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://hsancarlos.com/wp-content/uploads/2019/05/Logopng.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://www.caminorealantigua.com.gt/wp-content/uploads/2019/01/logo_CRAntigua_final.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://www.hotelcasaveranda.com/uploads/9/8/6/9/98696210/logo-scroll_3.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://static.wixstatic.com/media/b30165_fcbe561916e7482d8cfc1d8c07f47571~mv2.png/v1/fit/w_2500,h_1330,al_c/b30165_fcbe561916e7482d8cfc1d8c07f47571~mv2.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://hotelfontabella.com/wp-content/uploads/2022/04/LOGO-HOTEL-2.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <img src="https://casapopenoe.ufm.edu/festivalaguacate2018/wp-content/uploads/2017/10/casablanca_logo.png" class="img-fluid" alt="">
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Cliens Section -->
+
+
+   <!-- ======= Services Section ======= -->
+   <section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>HOTELES ASOCIADOS</h2>
+        <p *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'" class="textoHoteles">Busca y Visita los mejores Hoteles, tendrá información concreta sobre los establecimientos, todos estos Hoteles son
+          asociados con el sitio, puede verlos, conocer los datos más relevantes, así mismo buscar a los Hoteles por su nombre o bien por su dirección. Como Administrador de la Aplicación controla y maneja
+          a los establecimientos, puedes agregar un nuevo Hotel que se vaya asociando, editarlo o incluso eliminarlo, en caso que se descarte la asociación. <br><br>
+          Se hace evidente desde el nombre del Hotel, su Correo de Contacto, su respectiva información destacando, la Dirección y el País donde se encuentra, su Precio de base de Habitación,
+          su Teléfono de Contacto, y por último, la Identificación del Administrador, al momento de agregar un Hotel, la Identificación será del Administrador de la Aplicación, en caso que el
+           Administrador del Hotel, ya este registrado, edita y coloca su Identificación personal.
+        </p>
+
+        <p *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'" class="textoHoteles">Busca y Visita los mejores Hoteles, tendrá información concreta sobre los establecimientos,
+          todos estos Hoteles son asociados con el sitio, puede verlos, conocer los datos más relevantes, así mismo buscar a los Hoteles por su nombre o bien por su dirección.
+          Como Cliente, puedes hacer tu apropiada reservación, tienes acceso para visualizar las habitaciones que ofrece el Hotel, también mira los eventos que se realizan,
+          y todos los servicios del Hotel.
+        </p>
+
+      </div>
+    </div>
+
+  </section><!-- End Services Section -->
+
+  <section class="services section-bg">
+    <div class="container">
+      <div class="input-group">
+        <input  [(ngModel)]="buscar" type="Buscar" class="form-control rounded" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon" />
+        <button type="button" class="btn btn-outline-primary">Buscar</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="services section-bg">
+  <div class="container">
+
+
+    <div class="row" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'">
+      <div class="card mb-3 text-center" style="max-height: 300px" *ngFor="let hotel of hotelModelGet | buscar:buscar" >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img ngClass="imagen-card" src="https://live.staticflickr.com/4077/4879184761_b2883caf09_k.jpg" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class="section-title1">
+                <h4 class="card-title" style="text-align: center;" >{{ hotel.nombreHotel }}</h4>
+              </div>
+              <h6 class="card-title" style="text-align: center;" >{{ hotel.email }}</h6>
+
+              <p class="card-text" style="justify-self: start;">Dicho establecimiento se encuentra en {{ hotel.direccion }}, {{ hotel.pais }}. Poseen un excelente servicio,
+                 precios desde {{ hotel.precioHabitacion }} USD. ¡Llama ya al {{ hotel.telefono }}!</p>
+
+              <p class="card-text" style="text-align:center;"><i class="bi bi-person-check-fill"></i> {{hotel.idAdmin}}. </p>
+
+              <span data-tooltip="Modificar al Hotel">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarHotel" (click)="getHotelId(hotel._id)">
+                  <i class="bi bi-pencil-square"></i></button>
+              </span>
+
+              <span data-tooltip="Eliminar al Hotel">
+                <button class="btn btn-primary" (click)="deleteHotel(hotel._id)">
+                  <i class="bi bi-file-earmark-minus"></i></button>
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="row" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'">
+        <div class="card mb-3 text-center" style="max-height: 300px" *ngFor="let hotel of hotelModelGet | buscar:buscar" >
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img ngClass="imagen-card" src="https://live.staticflickr.com/4077/4879184761_b2883caf09_k.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="section-title1">
+                  <h4 class="card-title" style="text-align: center;" [routerLink]="['/Usuario/Habitaciones', hotel._id]" >{{ hotel.nombreHotel }}</h4>
+                </div>
+                <h6 class="card-title" style="text-align: center;" >{{ hotel.email }}</h6>
+
+                <p class="card-text" style="justify-self: start;">Dicho establecimiento se encuentra en {{ hotel.direccion }}, {{ hotel.pais }}. Poseen un excelente servicio,
+                  siempre al tanto de sus clientes, precios desde {{ hotel.precioHabitacion }} USD.</p>
+
+                <p class="card-text" style="text-align:center;">¡Llama ya al {{ hotel.telefono }}!</p>
+
+                <!--<form>
+                  <p class="clasificacion">
+                    <input id="radio1" type="radio" name="estrellas" value="5">
+                    <label for="radio1">★</label>
+                    <input id="radio2" type="radio" name="estrellas" value="4">
+                    <label for="radio2">★</label>
+                    <input id="radio3" type="radio" name="estrellas" value="3">
+                    <label for="radio3">★</label>
+                    <input id="radio4" type="radio" name="estrellas" value="2">
+                    <label for="radio4">★</label>
+                    <input id="radio5" type="radio" name="estrellas" value="1">
+                    <label for="radio5">★</label>
+                  </p>
+                </form>-->
+
+                  <button class="btn btn-primary" [routerLink]="['/Usuario/Habitaciones', hotel._id]">
+                    <i class="bi bi-clipboard-check"></i> Iniciar Reservación</button>
+
+                    <!--<button class="btn btn-primary" routerLink="/Usuario/Habitaciones">
+                      <i class="bi bi-clipboard-check"></i> Iniciar Reservación</button>-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+ </div>
+</section>
+
+<!-- ======= Cta Section ======= -->
+<section id="cta" class="cta" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="row">
+      <div class="col-lg-9 text-center text-lg-start">
+        <h3>Usuarios Registrados</h3>
+        <p>Siendo Administrador, puedes visualizar a todos los usuarios registrados dentro de la Aplicación, verifica algunos, ya que varios son los Administradores
+          de los Hoteles Asociados, debes de aclarar que ellos son Administradores de Hoteles, ¡Verifica los Roles!
+        </p>
+      </div>
+      <div class="col-lg-3 cta-btn-container text-center">
+        <a class="cta-btn align-middle" routerLink="/Admin/AdministracionUsuarios">Ver Usuarios</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Cta Section -->
+
+<!-- ======= Cta Section ======= -->
+<section id="cta" class="cta" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="row">
+      <div class="col-lg-9 text-center text-lg-start">
+        <h3>Tu Perfil de Cliente</h3>
+        <p>Si algo no anda bien con tu perfil, o bien deseas hacer algún cambio, lo puede hacer dirigiéndote, a la barra de navegación, presionando tu nombre de Usuario, o bien,
+          desde este botón, realiza los cambios necesarios, o elimina tu cuenta si así lo deseas.
+        </p>
+      </div>
+      <div class="col-lg-3 cta-btn-container text-center">
+        <a class="cta-btn align-middle" routerLink="/Usuario/PerfilCliente">¡Tú tienes el Control!</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Cta Section -->
+
+<section id="services" class="services section-bg">
+
+  <div id="portfolio" class="portfolio-area area-padding fix">
+    <div class="container">
+      <div class="row">
+    <div class="section-title">
+      <h2>GALERÍA DE FOTOGRAFÍAS</h2>
+    </div>
+  </div>
+
+  <div class="row awesome-project-content portfolio-container">
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-app portfolio-item">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/90/e4/e6/hotel-facade.jpg?w=900&h=-1&s=1" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>Entrada del Hotel</h4>
+              <span>InterContinental Tegucigalpa</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-web">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://www.cleantecsoftware.com/images/hotel_3.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>Hoteles de Lujo</h4>
+              <span>Piscina, Spa y Mucho más</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://www.hiltonhotels.com/assets/img/Hotel%20Images/Hilton/G/GUALLHH/GUALLHH_full_8502365.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>La Belleza de Guatemala</h4>
+              <span>Hoteles y Servicios de Calidad</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://images.e-tsw.com/_lib/b2b2c-sites/amr/dreamsmx/img/resorts/riviera-cancun/accommodations/slider/1.jpg?v1" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery">
+              <h4>Las Mejores Habitaciones</h4>
+              <span>Disfruta de la Comodidad</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://p4.wallpaperbetter.com/wallpaper/750/566/555/costa-adeje-gran-hotel-4k-hd-computer-desktop-wallpaper-preview.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery" >
+              <h4>Intalaciones Preciosas</h4>
+              <span>Lugares Inolvidables</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4 col-xs-12 portfolio-item filter-card">
+    <div class="single-awesome-project">
+      <div class="awesome-img">
+        <a href="#"><img src="https://viajesdeunchapin.com/wp-content/uploads/2022/01/porta-hotel-del-lago-habitacion-con-vista-al-lago.jpg" alt="" /></a>
+        <div class="add-actions text-center">
+          <div class="project-dec">
+            <a class="portfolio-lightbox" data-gallery="myGallery" >
+              <h4>Cultura y Tradiciones</h4>
+              <span>Visita y Descansa</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section><!-- End Services Section -->
+
+<!--Modal Agregar Hotel-->
+<div class="modal fade" id="modalAgregarHotel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Agregar Hotel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm">
+
+          <div class="mb-3">
+            <label for="inputNombreHotel" class="form-label">Nombre de la Hotel</label>
+            <input placeholder="Barceló Guatemala City" type="text" class="form-control" name="nombreHotel" #nombreHotel="ngModel" required
+            [(ngModel)]="hotelModelPost.nombreHotel">
+              <div [hidden]="nombreHotel.valid || nombreHotel.pristine"
+                class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Correo de Contacto</label>
+            <input placeholder="@gmail.com" type="email" class="form-control" name="email" #email="ngModel" required
+            [(ngModel)]="hotelModelPost.email">
+              <div [hidden]="email.valid || email.pristine"
+                class="alert alert-danger">Se requiere colocar el Correo para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputDireccion" class="form-label">Dirección del Hotel</label>
+            <input placeholder="Ubicacion Concreta" type="text" class="form-control" name="direccion" #direccion="ngModel" required
+            [(ngModel)]="hotelModelPost.direccion">
+              <div [hidden]="direccion.valid || direccion.pristine"
+                class="alert alert-danger">Se requiere colocar la Dirección para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputTelefono" class="form-label">Teléfono de Contacto</label>
+            <input placeholder="Número de Contacto" type="tel" class="form-control" name="telefono" #telefono="ngModel" required
+            [(ngModel)]="hotelModelPost.telefono">
+              <div [hidden]="telefono.valid || telefono.pristine"
+                class="alert alert-danger">Se requiere colocar la Teléfono para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPais" class="form-label">País</label>
+            <input placeholder="Guatemala" type="text" class="form-control" name="pais" #pais="ngModel" required
+            [(ngModel)]="hotelModelPost.pais">
+              <div [hidden]="pais.valid || pais.pristine"
+                class="alert alert-danger">Se requiere colocar la País para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecioHabitacion" class="form-label">Precio Base de las Habitaciones</label>
+            <input placeholder="USD" type="number" class="form-control" name="precioHabitacion" #precioHabitacion="ngModel" required
+            [(ngModel)]="hotelModelPost.precioHabitacion">
+              <div [hidden]="precioHabitacion.valid || precioHabitacion.pristine"
+                class="alert alert-danger">Se requiere colocar la Precio Base para continuar.
+              </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postHoteles(addForm)" data-bs-dismiss="modal">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal Editar Hotel-->
+<div class="modal fade" id="modalEditarHotel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Editar Datos del Hotel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="mb-3">
+            <label for="inputNombreHotel" class="form-label">Editar Nombre del Hotel</label>
+            <input placeholder="Barceló Guatemala City" type="text" class="form-control" name="nombreHotel" #nombreHotel="ngModel" required
+            [(ngModel)]="hotelModelGetId.nombreHotel">
+              <div [hidden]="nombreHotel.valid || nombreHotel.pristine"
+                class="alert alert-danger">Se requiere colocar el Nombre para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Correo de Contacto</label>
+            <input placeholder="@gmail.com" type="email" class="form-control" name="email" #email="ngModel" required
+            [(ngModel)]="hotelModelGetId.email">
+              <div [hidden]="email.valid || email.pristine"
+                class="alert alert-danger">Se requiere colocar el Correo para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputDireccion" class="form-label">Dirección del Hotel</label>
+            <input placeholder="Ubicacion Concreta" type="text" class="form-control" name="direccion" #direccion="ngModel" required
+            [(ngModel)]="hotelModelGetId.direccion">
+              <div [hidden]="direccion.valid || direccion.pristine"
+                class="alert alert-danger">Se requiere colocar la Dirección para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputTelefono" class="form-label">Teléfono de Contacto</label>
+            <input placeholder="Número de Contacto" type="tel" class="form-control" name="telefono" #telefono="ngModel" required
+            [(ngModel)]="hotelModelGetId.telefono">
+              <div [hidden]="telefono.valid || telefono.pristine"
+                class="alert alert-danger">Se requiere colocar la Teléfono para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPais" class="form-label">País</label>
+            <input placeholder="Guatemala" type="text" class="form-control" name="pais" #pais="ngModel" required
+            [(ngModel)]="hotelModelGetId.pais">
+              <div [hidden]="pais.valid || pais.pristine"
+                class="alert alert-danger">Se requiere colocar la País para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPrecioHabitacion" class="form-label">Precio Base de las Habitaciones</label>
+            <input placeholder="USD" type="number" class="form-control" name="precioHabitacion" #precioHabitacion="ngModel" required
+            [(ngModel)]="hotelModelGetId.precioHabitacion">
+              <div [hidden]="precioHabitacion.valid || precioHabitacion.pristine"
+                class="alert alert-danger">Se requiere colocar la Precio Base para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputIdAdmin" class="form-label">Identificación del Administrador</label>
+            <input placeholder="Identificación" type="text" class="form-control" name="idAdmin" #idAdmin="ngModel" required
+            [(ngModel)]="hotelModelGetId.idAdmin">
+              <div [hidden]="idAdmin.valid || idAdmin.pristine"
+                class="alert alert-danger">Se requieren los datos del Administrador para continuar.
+              </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="putHoteles()" data-bs-dismiss="modal">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>
+</main>
+</body>
+</html>

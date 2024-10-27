@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <section>
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0">
+              <div class="col-xl-6 d-none d-xl-block">
+                <img src="https://live.staticflickr.com/1900/30677983388_c8de8854b2_k.jpg" alt="Sample photo" class="img-fluid"
+                  style="
+                      border-top-left-radius: 0.25rem;
+                      border-bottom-left-radius: 0.25rem;
+                    " />
+              </div>
+              <div class="col-xl-6">
+                <div class="card-body p-md-5 text-black">
+                  <h3 class=" h3 mb-3 text">¡Regístrate Aquí!</h3>
+                  <p class="texto" style="text-align: center">comienza con nosotros, ¡Empieza Ya!</p>
+                  <br>
+
+                  <div class="row">
+                    <label class="form-label" for="form3Example1m">Nombre</label>
+                    <div class="mb-4">
+                      <div class="form-outline">
+                        <input type="text" placeholder="Nombre Empresa" class="form-control form-control-lg"
+                          id="inputNombre" name="nombre" #nombre="ngModel" [(ngModel)]="usuarioModelPost.nombre"
+                          required />
+                        <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">Se requiere un Nombre
+                          para Registrarte.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="form-label" for="form3Example1m">Dirección </label>
+                    <div class="mb-4">
+                      <div class="form-outline">
+                        <input type="text" placeholder="Dirección Concreta" class="form-control form-control-lg"
+                          id="inputDirección" name="dirección" #direccion="ngModel"
+                          [(ngModel)]="usuarioModelPost.direccion" required />
+                        <div [hidden]="direccion.valid || direccion.pristine" class="alert alert-danger">Se requiere su Direcciónpara continuar.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="form-label" for="form3Example1m">País o Ubicación</label>
+                    <div class="mb-4">
+                      <div class="form-outline">
+                        <input type="text" placeholder="Guatemala" class="form-control form-control-lg"
+                          id="inputPais" name="pais" #pais="ngModel"
+                          [(ngModel)]="usuarioModelPost.pais" required />
+                        <div [hidden]="pais.valid || pais.pristine" class="alert alert-danger">Se requiere su Ubicación para continuar.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example90">Correo de Contacto</label>
+                    <input type="email" placeholder="@gmail.com" id="form3Example90"
+                      class="form-control form-control-lg" id="inputEmail" name="email" #email="ngModel"
+                      [(ngModel)]="usuarioModelPost.email" required />
+                    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Se requiere el Correo de
+                      Contacto para Registrarte.
+                    </div>
+
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example99">Clave de Acceso</label>
+                    <input type="password" placeholder="Password" id="form3Example99"
+                      class="form-control form-control-lg" id="inputPassword" name="password" #password="ngModel"
+                      [(ngModel)]="usuarioModelPost.password" required />
+                    <div [hidden]="password.valid || password.pristine" class="alert alert-danger">No olvides tu Clave
+                      de Acceso para Registrarte.
+                    </div>
+
+                  </div>
+                  <br>
+
+                  <div class="d-flex justify-content-end pt-3">
+
+                    <button type="button" class="btn btn-primary-r btn-lg" routerLink="/Inicio">Regresar</button>
+
+                    <button type="button" class="btn btn-primary btn-lg ms-2" (click)="postUsuarios()" routerLink="/Login">
+                      Registar
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

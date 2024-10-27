@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+
+<body>
+
+  <!-- ======= hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active" style="background-image: url(https://live.staticflickr.com/3916/15299647515_029acccdee_b.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+
+                <h2 class="animate__animated animate__fadeInDown">¡ADMINISTRACIÓN DE USUARIOS!</h2>
+                <p class="animate__animated animate__fadeInUp">CONTROL DE LOS USUARIOS REGISTRADOS</p>
+
+                <a class="btn-get-started scrollto animate__animated animate__fadeInUp" type="button" routerLink="/Admin/Hoteles">REGRESAR</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+   <section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>USUARIOS REGISTRADOS</h2>
+        <p class="textoHoteles">Como Administrador, posees acceso a la información de los Usuarios Registrados, esto por motivos de seguridad y políticas de la aplicación, así se lleva
+          el correcto registro de los datos, estos mismos de gran importancia, igualmente se tiene la capacidad de cambiar de Rol a los Usuarios, esto en caso que tengan el cargo de
+          Administradores de algún Hotel en particular. Verifica en las cartas de los Usuarios su Rol o denominación dentro de la Aplicación.
+        </p>
+
+      </div>
+    </div>
+  </section><!-- End Services Section -->
+
+  <section class="services section-bg">
+    <div class="container">
+
+      <div class="row">
+        <div class="card mb-3 text-center" style="max-width: 625px" *ngFor="let user of usuarioModelGet" >
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img ngClass="imagen-card" src="https://www.xtrafondos.com/wallpapers/vertical/edificios-en-ciudad-9082.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="section-title1">
+                  <h4 class="card-title" style="text-align: center;">{{ user.nombre }}</h4>
+                </div>
+                <h6 class="card-title" style="text-align: center;"><i class="bi bi-people-fill"></i> {{user.rol}}</h6>
+                <br>
+
+                <p class="card-text" style="justify-self: start;">Excelente Usuario, sabe cómo tratar a las demás personas, se encuentra en
+                  {{user.direccion}}, {{user.pais}}, se agradece su preferencia.
+                </p>
+
+                <p class="card-text" style="text-align:center;">Contacto por {{ user.email }}.</p>
+                <br>
+
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarCliente" (click)="getUsuariosId(user._id)">
+                  <i class="bi bi-pencil-square"></i> Modificar Usuario</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+   </div>
+  </section>
+
+  <!-- ======= Cta Section ======= -->
+<section id="cta" class="cta">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="row">
+      <div class="col-lg-9 text-center text-lg-start">
+        <h3>Hoteles Asociados</h3>
+        <p>Siendo Administrador, puedes visualizar a todos los Hoteles Asociados con la Aplicación, verifica algunos, ya que Administradores
+          de dichos Hoteles ya se encuentran registrados, debes de aclarar y colocar su identificación dentro del Hotel donde Trabajan.
+        </p>
+      </div>
+      <div class="col-lg-3 cta-btn-container text-center">
+        <a class="cta-btn align-middle" routerLink="/Admin/Hoteles">Ver Hoteles</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Cta Section -->
+
+  <section class="services section-bg">
+    <div class="container">
+
+  <!-- ======= Services Section ======= -->
+  <div id="services" class="services-area area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-title">
+            <h2>ADMINISTRACIÓN</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <!-- Start Left services -->
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="about-move">
+            <div class="services-details">
+              <div class="single-services">
+                <a class="services-icon" href="#">
+                  <i class="bi bi-briefcase"></i>
+                </a>
+                <h4>Trabajo de Calidad</h4>
+                <p>
+                  Buscamos otorgar un Servicio de Calidad por medio de una aplicación llamativa e intuitiva, solo tú tienes el control.
+                </p>
+              </div>
+            </div>
+            <!-- end about-details -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="about-move">
+            <div class="services-details">
+              <div class="single-services">
+                <a class="services-icon" href="#">
+                  <i class="bi bi-card-checklist"></i>
+                </a>
+                <h4>Servicio al Cliente</h4>
+                <p>
+                  Los Clientes, su bienestar y comodidad dentro de la aplicación son nuestra prioridad, nuestros Clientes van primero.
+                </p>
+              </div>
+            </div>
+            <!-- end about-details -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <!-- end col-md-4 -->
+          <div class=" about-move">
+            <div class="services-details">
+              <div class="single-services">
+                <a class="services-icon" href="#">
+                  <i class="bi bi-bar-chart"></i>
+                </a>
+                <h4>Atentos al Detalle</h4>
+                <p>
+                  No dejamos a los detalles de lado, y todas las correcciones o recomendaciones son bien recibidas por nuestro equipo.
+                </p>
+              </div>
+            </div>
+            <!-- end about-details -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <!-- end col-md-4 -->
+          <div class=" about-move">
+            <div class="services-details">
+              <div class="single-services">
+                <a class="services-icon" href="#">
+                  <i class="bi bi-binoculars"></i>
+                </a>
+                <h4>Desarrollo Inteligente</h4>
+                <p>
+                  Todos los elementos tienen un propósito, ya sea dar información importante, o bien concretar alguna función.
+                </p>
+              </div>
+            </div>
+            <!-- end about-details -->
+          </div>
+        </div>
+        <!-- End Left services -->
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <!-- end col-md-4 -->
+          <div class=" about-move">
+            <div class="services-details">
+              <div class="single-services">
+                <a class="services-icon" href="#">
+                  <i class="bi bi-brightness-high"></i>
+                </a>
+                <h4>Funcionamiento</h4>
+                <p>
+                  Buscamos el equilibrio entre un adecuado diseño y una correcta funcionalidad, dando así una aplicación referente.
+                </p>
+              </div>
+            </div>
+            <!-- end about-details -->
+          </div>
+        </div>
+        <!-- End Left services -->
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <!-- end col-md-4 -->
+          <div class=" about-move">
+            <div class="services-details">
+              <div class="single-services">
+                <a class="services-icon" href="#">
+                  <i class="bi bi-calendar4-week"></i>
+                </a>
+                <h4>Diseño</h4>
+                <p>
+                  De sencillo entendimiento, fácil de utilizar, elegancia y buena estructura, elementos correctamente colocados.
+                </p>
+              </div>
+            </div>
+            <!-- end about-details -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Services Section -->
+<br>
+</div>
+</section>
+
+<!--Modal Editar Usuario-->
+<div class="modal fade" id="modalEditarCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #283a5ae6">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Editar Rol del Cliente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <!--<div class="mb-3">
+            <label for="inputRol" class="form-label">Editar Rol del Usuario</label>
+            <input placeholder="ROL_HOTEL" type="text" class="form-control" name="rol" #rol="ngModel" required
+            [(ngModel)]="usuarioModelGetId.rol">
+              <div [hidden]="rol.valid || rol.pristine"
+                class="alert alert-danger">Se requiere colocar el Rol para continuar.
+              </div>
+          </div>-->
+
+          <div class="form-group">
+            <label for="direccioSucursal">Editar Rol del Usuario</label>
+            <select id="rol" style="width:100%; height: 2rem;" name="rol" #rol="ngModel"
+            [(ngModel)]="usuarioModelGetId.rol" required>
+            <option value="ROL_CLIENTE">ROL_CLIENTE</option>
+            <option value="ROL_HOTEL">ROL_HOTEL</option>
+          </select>
+
+          </div>
+
+          <div class="mb-3">
+            <label for="inputIdHotel" class="form-label">Editar Lugar de Trabajo</label>
+            <input placeholder="identificación del Hotel" type="text" class="form-control" name="idHotel" #idHotel="ngModel" required
+            [(ngModel)]="usuarioModelGetId.idHotel">
+              <div [hidden]="idHotel.valid || idHotel.pristine"
+                class="alert alert-danger">Se requiere colocar el Rol para continuar.
+              </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="putUsuarios()" data-bs-dismiss="modal">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+</main>
+</body>
+</html>

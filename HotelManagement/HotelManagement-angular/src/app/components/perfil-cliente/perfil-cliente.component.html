@@ -1,0 +1,60 @@
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+      <div class="col-md-3 border-right">
+
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'"><img class="rounded-circle mt-5" width="225px" height="225px"
+            src="https://live.staticflickr.com/2099/2512672571_fa09ad50f8_h.jpg">
+            <br>
+            <span class="font-weight-bold">{{user.nombre}}</span><span class="text-black-50">{{user.email}}</span><span> </span>
+          </div>
+
+         <!-- <div class="d-flex flex-column align-items-center text-center p-3 py-5" *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_ADMINISTRADOR'"><img class="rounded-circle mt-5" width="225px" height="225px"
+            src="https://www.aycelaborytax.com/wp-content/uploads/2019/02/tipos-administrador.jpg">
+            <br>
+            <span class="font-weight-bold">{{user.nombre}}</span><span class="text-black-50">{{user.email}}</span><span> </span>
+          </div> -->
+
+      </div>
+      <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-right">Configura tú Perfil</h4>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-12"><label class="labels">Nombre o Usuario</label><input [(ngModel)]="user.nombre" type="text" class="form-control" placeholder="Nombre de Usuario Nuevo" value=""></div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-12"><label class="labels">Correo de Contacto</label><input [(ngModel)]="user.email" type="email" class="form-control" placeholder="Correo de Contacto Nuevo" value=""></div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12"><label class="labels">Dirección</label><input [(ngModel)]="user.direccion" type="text" class="form-control" value="" placeholder="Dirección Concreta"></div>
+                </div>
+              <div class="row mt-3">
+                  <div class="col-md-6"><label class="labels">País</label><input [(ngModel)]="user.pais" type="text" class="form-control" placeholder="Guatemala" value=""></div>
+              </div>
+              <div class="mt-5 ">
+                <button (click)="updateUser()" class="btn btn-primary profile-button" type="button">Guardar Perfil</button>
+
+                <button (click)="deleteUser()" routerLink="/Login" class="btn btn-primary profile-button" type="button">Eliminar Perfil</button>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center experience"><span class="historial"></span>
+
+                <div *ngIf="_usuarioService.obtenerIdentidad().rol === 'ROL_CLIENTE'">
+                  <span class="border px-3 p-1 add-experience" routerLink="/Usuario/Hoteles"><i class="fa fa-plus" style="text-align: center"></i>Regresar</span>
+                </div>
+                </div>
+                </div>
+
+              <div class="col-md-12"><label class="labels">Historial y Facturación</label><br><br>
+                <span class="border px-3 p-1 add-experience"[routerLink]="['/Usuario/FacturaHistorial', user._id]"><i class="fa fa-plus" style="text-align: center"></i>Visualizar</span>
+              </div>
+              <br>
+
+          </div>
+      </div>
+  </div>
+<app-footer></app-footer>

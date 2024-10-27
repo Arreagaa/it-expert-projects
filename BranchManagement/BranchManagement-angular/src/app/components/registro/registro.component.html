@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col">
+            <div class="card card-registration my-4">
+              <div class="row g-0">
+                <div class="col-xl-6 d-none d-xl-block">
+                  <img
+                    src="https://i.pinimg.com/736x/a6/4c/b9/a64cb99c2632012fa3cb3dd705a0604f.jpg"
+                    alt="Sample photo"
+                    class="img-fluid"
+                    style="
+                      border-top-left-radius: 0.25rem;
+                      border-bottom-left-radius: 0.25rem;
+                    "
+                  />
+                </div>
+                <div class="col-xl-6">
+                  <div class="card-body p-md-5 text-black">
+                    <h3 class=" h3 mb-3 text">¡Regístrate Aquí!</h3>
+                    <p class="texto" style="text-align: center">Lleva tú el Control, ¡Empieza Ya!</p>
+                    <br>
+
+                    <div class="row">
+                      <label class="form-label" for="form3Example1m">Nombre de la Empresa</label>
+                      <div class="mb-4">
+                        <div class="form-outline">
+                          <input type="text" placeholder="Nombre Empresa" class="form-control form-control-lg" id="inputNombre"
+                          name="nombre" #nombre="ngModel"
+                          [(ngModel)]="usuarioModelPost.nombre" required/>
+                          <div [hidden]="nombre.valid || nombre.pristine"
+                            class="alert alert-danger">Se requiere un Nombre para Registrarte.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <label class="form-label" for="form3Example8">Dirección</label>
+                    <div class="form-outline mb-4">
+                      <input type="email" placeholder="Dirección" id="form3Example8" class="form-control form-control-lg"/>
+                    </div>
+
+                    <div class="row">
+                    <label class="form-label" for="form3Example1m">Tipo de la Empresa</label>
+                      <div class="mb-4">
+                        <div class="form-outline">
+                          <input type="text" placeholder="Tipo empresa" class="form-control form-control-lg" id="inputTipo"
+                          name="tipo" #tipo="ngModel"
+                          [(ngModel)]="usuarioModelPost.tipo" required/>
+                          <div [hidden]="tipo.valid || tipo.pristine"
+                            class="alert alert-danger">Se requiere el Tipo de la Empresa para Registrarte.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                     <a href="https://aprende.guatemala.com/historia/geografia/mapa-municipios-del-departamento-de-guatemala/" target="_blank"><label class="form-label" for="form3Example1m">Nombre del Municipio</label></a>
+                      <div class="mb-4">
+                        <div class="form-outline">
+                          <input type="text" placeholder="Municipio" class="form-control form-control-lg" id="inputMunicipio"
+                          name="municipio" #municipio="ngModel"
+                          [(ngModel)]="usuarioModelPost.municipio" required/>
+                          <div [hidden]="municipio.valid || municipio.pristine"
+                            class="alert alert-danger">Se requiere un Municipio para continuar.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example90">Correo</label>
+                      <input type="email" placeholder="@gmail.com" id="form3Example90"class="form-control form-control-lg" id="inputEmail"
+                      name="email" #email="ngModel"
+                      [(ngModel)]="usuarioModelPost.email" required/>
+                      <div [hidden]="email.valid || email.pristine"
+                        class="alert alert-danger">Se requiere el Correo de Contacto para Registrarte.
+                      </div>
+
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example99">Clave de Acceso</label>
+                      <input type="password" placeholder="Password" id="form3Example99" class="form-control form-control-lg" id="inputPassword"
+                      name="password" #password="ngModel"
+                      [(ngModel)]="usuarioModelPost.password" required/>
+                      <div [hidden]="password.valid || password.pristine"
+                        class="alert alert-danger">No olvides tu Clave de Acceso para Registrarte.
+                      </div>
+
+                    </div>
+
+                    <div class="d-flex justify-content-end pt-3">
+
+                      <button type="button" class="btn btn-primary-r btn-lg" routerLink="/Inicio">Regresar</button>
+
+                      <button type="button" class="btn btn-primary btn-lg ms-2" (click)="postUsuarios()" routerLink="/Login">
+                        Registar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

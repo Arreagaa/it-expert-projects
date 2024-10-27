@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+    <body>
+        <div class="container px-4 px-lg-5">
+          <br>
+          <br>
+          <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProductosEmpresa"><i class="bi bi-file-earmark-plus"></i>
+            Agregar Producto a la Empresa
+        </button>
+
+        <button class="btn btn-back" id="botonBack" routerLink="/Empresa/Dashboard"><i class="bi bi-arrow-left"></i> Regresar a Control de Sucursales</button>
+
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                <div class="col-lg-5"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://cdn.informa.es/sites/5c1a2fd74c7cb3612da076ea/pages/5c5026610fa1c000c25b5631/files/analisis-pagos-3.svg?1645775484"/></div>
+                <div class="col-lg-5">
+                    <h1 class="font-weight-light">Productos de Empresa</h1>
+                    <br>
+                    <p>Aquí podra ver los Productos con los que cuenta la Empresa, donde podra Modificar, Eliminar y Buscar el Producto deseado. Puedes buscar por el nombre del Producto
+                      , por Proveedores o por la Disponibilidad.</p>
+                    <div class="input-group">
+                      <input [(ngModel)]="buscar" type="Buscar" class="form-control rounded" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon" />
+                      <button type="button" class="btn btn-outline-primary">Buscar</button>
+                    </div>
+                    <br>
+                    <button type="button" class="btn btnStock" (click)="getProductosStockEmpresa()"><i class="bi bi-bag-check"></i> Ordenar por Stock Mayor</button>
+                    <button type="button" class="btn btnStock" (click)="getProductosStockEmpresaMenor()"><i class="bi bi-bag-check"></i> Ordenar por Stock Menor</button>
+                    <br>
+                    <!--<div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Buscar Por Stock</label>
+                    </div>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                      <label class="form-check-label" for="flexSwitchCheckChecked">Nombre Producto</label>
+                    </div>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                      <label class="form-check-label" for="flexSwitchCheckChecked">Nombre Proveedor</label>
+                    </div>-->
+
+          </div>
+           </div>
+
+            <div class="card text-white bg my-5 py-4 text-center">
+                <div class="card-body"><p class="text-white m-0">En este apartado, maneja de la mejor manera los productos propio de la Empresa, puedes mandar dichos productos a las Sucursales.</p></div>
+            </div>
+
+        </div>
+
+        <div class="container">
+          <div class="text-center">
+
+            <div class="col-sm">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Nombre Producto</th>
+                    <th scope="col">Nombre Proveedor</th>
+                    <th scope="col">Disponibilidad</th>
+                    <th scope="col">Cambios en Productos</th>
+                    <th scope="col">Descartar Productos</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let prodE of productosEmpresaModelGet | buscar:buscar ">
+                    <td>{{ prodE.nombreProducto }}</td>
+                    <td>{{ prodE.nombreProveedor }}</td>
+                    <td>{{ prodE.stock }}</td>
+                    <td>
+                      <span data-tooltip="Botón para Editar los Productos de la Empresa"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarProductosEmpresa" (click)="getProductosEmpresaId(prodE._id)"><i class="bi bi-pencil-square"></i> Modificar</button></span>
+                    </td>
+                    <td>
+                      <span data-tooltip="Botón para Eliminar los Productos de la Empresa"><button class="btn btn-primary" (click)="deleteProductosEmpresa(prodE._id)"><i class="bi bi-file-earmark-minus"></i> Descartar</button></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!--Modal Agregar Sucursal-->
+    <div class="modal fade" id="modalAgregarProductosEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #6793F4">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: white">Agregar Producto a la Empresa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form #addForm="ngForm">
+
+              <div class="mb-3">
+                <label for="inputNombreProductoEmpresa" class="form-label">Nombre del Producto</label>
+                <input placeholder="Producto de la Empresa" type="text" class="form-control" name="nombreProductoEmpresa" #nombreProductoEmpresa="ngModel"
+                [(ngModel)]="productosEmpresaModelPost.nombreProducto" required>
+                  <div [hidden]="nombreProductoEmpresa.valid || nombreProductoEmpresa.pristine"
+                    class="alert alert-danger">Coloca el Nombre del Producto para continuar.
+                  </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="inputNombreProveedor" class="form-label">Nombre del Proveedor</label>
+                <input placeholder="Proveedor de la Empresa" type="text" class="form-control" name="nombreProveedor" #nombreProveedor="ngModel"
+                [(ngModel)]="productosEmpresaModelPost.nombreProveedor" required>
+                  <div [hidden]="nombreProveedor.valid || nombreProveedor.pristine"
+                    class="alert alert-danger">Coloca el Nombre del Proveedor para continuar.
+                  </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="inputStock" class="form-label">Cantidad en Existencia</label>
+                <input placeholder="Disponibilidad del Producto" type="number" class="form-control" name="stock" #stock="ngModel"
+                [(ngModel)]="productosEmpresaModelPost.stock" required>
+                  <div [hidden]="stock.valid || stock.pristine"
+                    class="alert alert-danger">Debes de color la Cantidad en Existencia del Producto.
+                  </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="postProductosEmpresa(addForm)" data-bs-dismiss="modal">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Modal Editar Sucursal-->
+    <div class="modal fade" id="modalEditarProductosEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #6793F4">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: white">Editar Datos de los Productos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+
+              <div class="mb-3">
+                <label for="inputNombreProductoEmpresa" class="form-label">Nombre del Producto</label>
+                <input placeholder="Producto de la Empresa" type="text" class="form-control" name="nombreProductoEmpresa" #nombreProductoEmpresa="ngModel"
+                [(ngModel)]="productosEmpresaModelId.nombreProducto" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="inputNombreProveedor" class="form-label">Nombre del Proveedor</label>
+                <input placeholder="Proveedor de la Empresa" type="text" class="form-control" name="nombreProveedor" #nombreProveedor="ngModel"
+                [(ngModel)]="productosEmpresaModelId.nombreProveedor" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="inputStock" class="form-label">Cantidad en Existencia</label>
+                <input placeholder="Disponibilidad del Producto" type="number" class="form-control" name="stock" #stock="ngModel"
+                [(ngModel)]="productosEmpresaModelId.stock" required>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="putProductosEmpresa()" data-bs-dismiss="modal">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Envio de Productos -->
+    <div class="offcanvas offcanvas-start" id="offcanvasProductosEmpresa"  data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" aria-labelledby="offcanvasScrollingLabel">
+      <div class="offcanvas-header" style="background-color: #6793F4">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel" style="color: white">Envía Productos a las Sucursales</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <br>
+        <figure class="d-inline-flex flex-column align-items-center m-0">
+          <img class="rounded-circle" src="https://p4.wallpaperbetter.com/wallpaper/202/251/688/building-architecture-vertical-wallpaper-preview.jpg" width="90">
+
+        </figure>
+      <br>
+
+      <div class="offcanvas-body">
+        <form #sendForm="ngForm">
+
+          <div class="mb-3">
+            <label for="inputNombreProductoSucursal" class="form-label">Nombre del Producto a Mandar</label>
+            <input placeholder="Producto que se enviará" type="text" class="form-control" name="nombreProductoSucursal" #nombreProductoSucursal="ngModel"
+            [(ngModel)]="productosSucursalModelPost.nombreProductoSucursal" required>
+              <div [hidden]="nombreProductoSucursal.valid || nombreProductoSucursal.pristine"
+                class="alert alert-danger">Coloca el Nombre del Producto a Mandar para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputNombreSucursal" class="form-label">Nombre de la Sucursal</label>
+            <input placeholder="Donde se enviará el Producto" type="text" class="form-control" name="nombreSucursal" #nombreSucursal="ngModel"
+            [(ngModel)]="productosSucursalModelPost.nombreSucursal" required>
+              <div [hidden]="nombreSucursal.valid || nombreSucursal.pristine"
+                class="alert alert-danger">Coloca el Nombre de la Sucursal para continuar.
+              </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Cantidad de Productos a Enviar</label>
+            <input placeholder="La Disponibilidad del Producto bajará"  type="number" class="form-control" name="stock" #stock="ngModel"
+            [(ngModel)]="productosSucursalModelPost.stockSucursal" required>
+              <div [hidden]="stock.valid || stock.pristine"
+                class="alert alert-danger">Coloca la Cantidad a Mandar para continuar.
+              </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="offcanvas">Close</button>
+        <button type="button" class="btn btn-primary" (click)="sendProductosEmpresa(sendForm)" data-bs-dismiss="offcanvas">Enviar</button>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <div class="mb-3 text-center">
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasProductosEmpresa"><i class="bi bi-check"></i> Enviar Productos a Sucursal</button>
+    </div>
+
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
+
